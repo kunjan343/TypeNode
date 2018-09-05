@@ -1,8 +1,18 @@
-import {Logger, LoggerInstance, LoggerOptions, transports} from 'winston';
+import * as winston from 'winston';
 
-export const logger: LoggerInstance = new Logger(<LoggerOptions> {
+const loggerOptions: winston.LoggerOptions = {
+    format: winston.format.combine(
+      winston.format.timestamp(),
+      winston.format.prettyPrint()
+    ),
     exitOnError: false,
     transports: [
-        new transports.Console()
+        new winston.transports.Console()
+        // new winston.transports.File({filename: 'server.log'})
+    ],
+    exceptionHandlers: [
+        new winston.transports.File({filename: 'exceptions.log'})
     ]
-});
+};
+
+export const logger: any = winston.createLogger(loggerOptions);

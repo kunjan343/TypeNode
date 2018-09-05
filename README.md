@@ -1,10 +1,18 @@
 # Node.js seed project for typescript starter server app
 
+### Pre-require library
+- `npm install -g nodemon`
+- `npm install -g ts-node`
+- `npm install -g tslint` <br>
+or 
+- Setup run commands to use it from local dependency.
+
 ### Installing dependency
 - Run `npm install` to install app dependency.
 - Use `npm install --save ******` to install new dependency or `npm install --save-dev ******` to install dev-dependency/types.
 
 ### Running project
+- Run `set(windows)/export(linux) NODE_ENV=development/production`.
 - This project uses `nodemon` to auto reflect new changes on development time.
 - Simply run `npm run live` to reflect new changes.
 - Run `npm start` to run production server.
