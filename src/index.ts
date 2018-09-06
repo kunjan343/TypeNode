@@ -1,6 +1,8 @@
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 import * as express from 'express';
-import { RegistrableController } from './controller/RegisterableController';
+import 'reflect-metadata';
+import { IRoutes } from './interfaces/route/IRoutes';
 import container from './inversify.config';
 import TYPES from './types';
 import { logger } from './util/Logger';
@@ -9,20 +11,11 @@ import { logger } from './util/Logger';
 const app: express.Application = express();
 // let express support JSON bodies
 app.use(bodyParser.json());
+app.use(cors());
 
 // grabs the Controller from IoC container and registers all the endpoints
-const controllers: RegistrableController[] = container.getAll<RegistrableController>(TYPES.Controller);
-controllers.forEach((controller) => controller.register(app));
-
-// setup express middleware logging and error handling
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    logger.error(err.stack);
-    next(err);
-});
-
-app.use((err: Error, req: express.Request, res: express.Response) => {
-    res.status(500).send('Internal Server Error');
-});
+const routes: IRoutes[] = container.getAll<IRoutes>(TYPES.Route);
+routes.forEach((controller) => controller.register(app));
 
 app.listen(3000, () => {
     logger.info('Example app listening on port 3000!');

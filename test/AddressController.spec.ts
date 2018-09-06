@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 import * as test from 'tape';
-import {AddressController} from '../src/controller/AddressController';
+import { AddressRoute } from '../src/routes/AddressRoute';
 
 test('addressController', (t) => {
     t.plan(1);
 
-    const controller = new AddressController(null);
+    const route = new AddressRoute(null);
 
-    t.assert(controller != null);
+    t.assert(route !== null);
 });

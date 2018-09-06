@@ -1,54 +1,27 @@
 import { inject, injectable } from 'inversify';
 import * as _ from 'lodash';
-import 'reflect-metadata';
 import { Address } from '../model/Address';
-import { AddressDTO } from '../model/AddressSchema';
-import { AddressRepository } from '../repository/AddressRepository';
+import { AddressDTO } from '../model/schema/AddressSchema';
+import { AddressModel } from '../models/AddressModel';
 import TYPES from '../types';
 
-export interface AddressService {
-    getAddresses(): Promise<Address[]>;
+export interface IAddressService {
+    /*getAddresses(): Promise<Address[]>;
 
     createAddress(address: Address): Promise<Address>;
 
     updateAddress(address: Address): Promise<Address>;
 
-    getAddress(id: string): Promise<Address>;
+    getAddress(id: string): Promise<Address>;*/
 }
 
 @injectable()
-export class AddressServiceImpl implements AddressService {
-    private static toAddress(address: Address): AddressDTO {
-        return {
-            address1: address.getAddress1,
-            address2: address.getAddress2,
-            city: address.getCity,
-            state: address.getState,
-            zip: address.getZip,
-            country: address.getCountry,
-            _id: address.getId
-        };
-    }
+export class AddressService implements IAddressService {
+    @inject(TYPES.AddressModel)
+    private addressModel: AddressModel;
 
-    private static toAddressDTO(addressDTO: AddressDTO): Address {
-        return new Address(
-          addressDTO.address1,
-          addressDTO.address2,
-          addressDTO.city,
-          addressDTO.state,
-          addressDTO.zip,
-          addressDTO.country,
-          addressDTO._id.toString());
-    }
-
-    @inject(TYPES.AddressRepository)
-    private addressRepositoryMongo: AddressRepository;
-
-    @inject(TYPES.AddressRepository2)
-    private addressRepositoryDb: AddressRepository;
-
-    public async getAddresses(): Promise<Address[]> {
-        // grab addresses from mongo
+    /*public async getAddresses(): Promise<Address[]> {
+        /!*!// grab addresses from mongo
         const addressesMongo: Address[] = await this.addressRepositoryMongo.findAll().then((a) => a.map((dto: AddressDTO) => {
             return this.toAddressDTO(dto);
         }));
@@ -58,7 +31,7 @@ export class AddressServiceImpl implements AddressService {
             return this.toAddressDTO(dto);
         }));
 
-        return _.uniqBy(addressesMongo.concat(addressesDb), 'id');
+        return _.uniqBy(addressesMongo.concat(addressesDb), 'id');*!/
     }
 
     public async createAddress(address: Address): Promise<Address> {
@@ -96,4 +69,27 @@ export class AddressServiceImpl implements AddressService {
 
         return address;
     }
+
+    private toAddress(address: Address): AddressDTO {
+        return {
+            address1: address.getAddress1,
+            address2: address.getAddress2,
+            city: address.getCity,
+            state: address.getState,
+            zip: address.getZip,
+            country: address.getCountry,
+            _id: address.getId
+        };
+    }
+
+    private toAddressDTO(addressDTO: AddressDTO): Address {
+        return new Address(
+          addressDTO.address1,
+          addressDTO.address2,
+          addressDTO.city,
+          addressDTO.state,
+          addressDTO.zip,
+          addressDTO.country,
+          addressDTO._id.toString());
+    }*/
 }
