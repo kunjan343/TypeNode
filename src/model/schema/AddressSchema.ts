@@ -1,4 +1,4 @@
-import { Column, PrimaryColumn, Table } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 export interface AddressDTO {
     _id?: string;
@@ -13,7 +13,7 @@ export interface AddressDTO {
 /**
  * TypeORM Schema Config
  */
-@Table('address')
+@Entity('address')
 export class AddressDbSchema implements AddressDTO {
     @PrimaryColumn()
     // tslint:disable-next-line:variable-name

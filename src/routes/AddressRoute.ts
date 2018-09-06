@@ -1,12 +1,12 @@
 import * as express from 'express';
 import { inject, injectable } from 'inversify';
+import { IRoutes } from '../interfaces/route/IRoutes';
 import { Address } from '../model/Address';
 import { AddressService } from '../service/AddressService';
 import TYPES from '../types';
-import { RegistrableController } from './RegisterableController';
 
 @injectable()
-export class AddressController implements RegistrableController {
+export class AddressController implements IRoutes {
     private addressService: AddressService;
 
     constructor(@inject(TYPES.AddressService) addressService: AddressService) {
