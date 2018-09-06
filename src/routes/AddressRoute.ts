@@ -1,12 +1,11 @@
 import * as express from 'express';
 import { inject, injectable } from 'inversify';
 import { IRoutes } from '../interfaces/route/IRoutes';
-import { Address } from '../model/Address';
 import { AddressService } from '../service/AddressService';
 import TYPES from '../types';
 
 @injectable()
-export class AddressController implements IRoutes {
+export class AddressRoute implements IRoutes {
     private addressService: AddressService;
 
     constructor(@inject(TYPES.AddressService) addressService: AddressService) {
@@ -14,7 +13,7 @@ export class AddressController implements IRoutes {
     }
 
     public register(app: express.Application): void {
-        app.route('/')
+        /*app.route('/')
           .get(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
               const addresses = await this.addressService.getAddresses().catch((err) => next(err));
               res.json(addresses);
@@ -50,6 +49,6 @@ export class AddressController implements IRoutes {
 
               const updatedAddress = await this.addressService.updateAddress(address).catch((err) => next(err));
               res.json(updatedAddress);
-          });
+          });*/
     }
 }
