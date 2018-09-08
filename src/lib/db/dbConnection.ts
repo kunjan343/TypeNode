@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { Connection, createConnection, getConnection } from 'typeorm';
 import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
-import { AddressDbSchema } from '../../model/schema/AddressSchema';
+import { UserSchema } from '../../model/schema/UserSchema';
 import { logger } from '../../util/Logger';
 
 export interface IDBConnection {
@@ -12,14 +12,16 @@ export interface IDBConnection {
 export class DBConnection implements IDBConnection {
     public connect: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
         try {
+            // Check and move forward if connection is already established
             const connection: Connection = getConnection('default');
             if (connection.isConnected) {
                 return next();
             }
         } catch (error) {
-            logger.info('connection not found, going to create new one');
+            logger.info('connection is not active, trying to create new one');
         }
         try {
+            // Create new connection
             await createConnection({
                 type: 'mongodb',
                 host: 'localhost',
@@ -28,9 +30,10 @@ export class DBConnection implements IDBConnection {
                 logging: true,
                 synchronize: true,
                 entities: [
-                    AddressDbSchema
+                    UserSchema
                 ]
             });
+            logger.info('Database connection established');
             return next();
         } catch (error) {
             logger.error('error', error);

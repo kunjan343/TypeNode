@@ -1,8 +1,9 @@
 const TYPES = {
-    AddressModel: Symbol('AddressModel'),
-    AddressService: Symbol('AddressService'),
+    UserModel: Symbol('UserModel'),
+    UserService: Symbol('UserService'),
     Route: Symbol('Route'),
-    DBConnection: Symbol('DBConnection')
+    DBConnection: Symbol('DBConnection'),
+    RequestHooks: Symbol('RequestHooks')
 };
 
 export default TYPES;
