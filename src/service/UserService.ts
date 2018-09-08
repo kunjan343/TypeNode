@@ -1,79 +1,79 @@
 import { inject, injectable } from 'inversify';
 import * as _ from 'lodash';
-import { Address } from '../model/Address';
-import { AddressDTO } from '../model/schema/AddressSchema';
-import { AddressModel } from '../models/AddressModel';
+import { User } from '../model/User';
+import { UserDTO } from '../model/schema/UserSchema';
+import { UserModel } from '../models/UserModel';
 import TYPES from '../types';
 
-export interface IAddressService {
-    /*getAddresses(): Promise<Address[]>;
+export interface IUserService {
+    /*getUseres(): Promise<User[]>;
 
-    createAddress(address: Address): Promise<Address>;
+    createUser(address: User): Promise<User>;
 
-    updateAddress(address: Address): Promise<Address>;
+    updateUser(address: User): Promise<User>;
 
-    getAddress(id: string): Promise<Address>;*/
+    getUser(id: string): Promise<User>;*/
 }
 
 @injectable()
-export class AddressService implements IAddressService {
-    @inject(TYPES.AddressModel)
-    private addressModel: AddressModel;
+export class UserService implements IUserService {
+    @inject(TYPES.UserModel)
+    private addressModel: UserModel;
 
-    /*public async getAddresses(): Promise<Address[]> {
+    /*public async getUseres(): Promise<User[]> {
         /!*!// grab addresses from mongo
-        const addressesMongo: Address[] = await this.addressRepositoryMongo.findAll().then((a) => a.map((dto: AddressDTO) => {
-            return this.toAddressDTO(dto);
+        const addressesMongo: User[] = await this.addressRepositoryMongo.findAll().then((a) => a.map((dto: UserDTO) => {
+            return this.toUserDTO(dto);
         }));
 
         // grab addresses from db
-        const addressesDb: Address[] = await this.addressRepositoryDb.findAll().then((a2) => a2.map((dto: AddressDTO) => {
-            return this.toAddressDTO(dto);
+        const addressesDb: User[] = await this.addressRepositoryDb.findAll().then((a2) => a2.map((dto: UserDTO) => {
+            return this.toUserDTO(dto);
         }));
 
         return _.uniqBy(addressesMongo.concat(addressesDb), 'id');*!/
     }
 
-    public async createAddress(address: Address): Promise<Address> {
-        const addressDTO: AddressDTO = this.toAddress(address);
+    public async createUser(address: User): Promise<User> {
+        const addressDTO: UserDTO = this.toUser(address);
 
-        const createdDTO: AddressDTO = await this.addressRepositoryMongo.create(addressDTO);
+        const createdDTO: UserDTO = await this.addressRepositoryMongo.create(addressDTO);
 
         // duplicates the address in the DB
         await this.addressRepositoryDb.create(await createdDTO);
 
-        return await this.toAddressDTO(createdDTO);
+        return await this.toUserDTO(createdDTO);
     }
 
-    public async updateAddress(address: Address): Promise<Address> {
-        const addressDTO: AddressDTO = this.toAddress(address);
+    public async updateUser(address: User): Promise<User> {
+        const addressDTO: UserDTO = this.toUser(address);
 
-        const updated: AddressDTO = await this.addressRepositoryMongo.update(addressDTO);
+        const updated: UserDTO = await this.addressRepositoryMongo.update(addressDTO);
 
         // update db address
         await this.addressRepositoryDb.update(updated);
 
-        return await this.toAddressDTO(updated);
+        return await this.toUserDTO(updated);
     }
 
-    public async getAddress(id: string): Promise<Address> {
+    public async getUser(id: string): Promise<User> {
         let address = await this.addressRepositoryMongo.find(id).then((a) => {
-            return this.toAddressDTO(a);
+            return this.toUserDTO(a);
         });
 
         if (!address) {
             address = await this.addressRepositoryDb.find(id).then((a) => {
-                return this.toAddressDTO(a);
+                return this.toUserDTO(a);
             });
         }
 
         return address;
     }
 
-    private toAddress(address: Address): AddressDTO {
+    private toUser(address: User): UserDTO {
         return {
-            address1: address.getAddress1,
-            address2: address.getAddress2,
+            address1: address.getUser1,
+            address2: address.getUser2,
             city: address.getCity,
             state: address.getState,
             zip: address.getZip,
@@ -82,8 +82,8 @@ export class AddressService implements IAddressService {
         };
     }
 
-    private toAddressDTO(addressDTO: AddressDTO): Address {
-        return new Address(
+    private toUserDTO(addressDTO: UserDTO): User {
+        return new User(
           addressDTO.address1,
           addressDTO.address2,
           addressDTO.city,

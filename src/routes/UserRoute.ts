@@ -1,25 +1,25 @@
 import * as express from 'express';
 import { inject, injectable } from 'inversify';
 import { IRoutes } from '../interfaces/route/IRoutes';
-import { AddressService } from '../service/AddressService';
+import { UserService } from '../service/UserService';
 import TYPES from '../types';
 
 @injectable()
-export class AddressRoute implements IRoutes {
-    private addressService: AddressService;
+export class UserRoute implements IRoutes {
+    private userService: UserService;
 
-    constructor(@inject(TYPES.AddressService) addressService: AddressService) {
-        this.addressService = addressService;
+    constructor(@inject(TYPES.UserService) userService: UserService) {
+        this.userService = userService;
     }
 
     public register(app: express.Application): void {
         /*app.route('/')
           .get(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-              const addresses = await this.addressService.getAddresses().catch((err) => next(err));
+              const addresses = await this.addressService.getUseres().catch((err) => next(err));
               res.json(addresses);
           })
           .post(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-              const address = new Address(
+              const address = new User(
                 req.body.address1,
                 req.body.address2,
                 req.body.city,
@@ -27,17 +27,17 @@ export class AddressRoute implements IRoutes {
                 req.body.zip,
                 req.body.country
               );
-              const createdAddress = await this.addressService.createAddress(address).catch((err) => next(err));
-              res.json(createdAddress);
+              const createdUser = await this.addressService.createUser(address).catch((err) => next(err));
+              res.json(createdUser);
           });
 
         app.route('/:id')
           .get(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-              const addresses = await this.addressService.getAddress(req.params.id).catch((err) => next(err));
+              const addresses = await this.addressService.getUser(req.params.id).catch((err) => next(err));
               res.json(addresses);
           })
           .put(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-              const address = new Address(
+              const address = new User(
                 req.body.address1,
                 req.body.address2,
                 req.body.city,
@@ -47,8 +47,8 @@ export class AddressRoute implements IRoutes {
                 req.body.id
               );
 
-              const updatedAddress = await this.addressService.updateAddress(address).catch((err) => next(err));
-              res.json(updatedAddress);
+              const updatedUser = await this.addressService.updateUser(address).catch((err) => next(err));
+              res.json(updatedUser);
           });*/
     }
 }

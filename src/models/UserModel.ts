@@ -1,39 +1,39 @@
 import { injectable } from 'inversify';
 import { Repository } from 'typeorm';
-import { AddressDbSchema, AddressDTO } from '../model/schema/AddressSchema';
+import { UserDbSchema, UserDTO } from '../model/schema/UserSchema';
 
-export interface IAddressModel {
-    /*findAll(): Promise<AddressDTO[]>;
+export interface IUserModel {
+    /*findAll(): Promise<UserDTO[]>;
 
-    create(addressDTO: AddressDTO): Promise<AddressDTO>;
+    create(addressDTO: UserDTO): Promise<UserDTO>;
 
-    update(addressDTO: AddressDTO): Promise<AddressDTO>;
+    update(addressDTO: UserDTO): Promise<UserDTO>;
 
-    find(id: string): Promise<AddressDTO>;*/
+    find(id: string): Promise<UserDTO>;*/
 }
 
 @injectable()
-export class AddressModel implements IAddressModel {
+export class UserModel implements IUserModel {
 
-    private addressRepository: Repository<AddressDbSchema>;
+    private addressRepository: Repository<UserDbSchema>;
 
     constructor() {
-        // this.addressRepository = connection.getRepository(AddressDbSchema);
+        // this.addressRepository = connection.getRepository(UserDbSchema);
     }
 
-    /*public async findAll(): Promise<AddressDTO[]> {
+    /*public async findAll(): Promise<UserDTO[]> {
         // return await this.addressRepository.find();
     }
 
-    public async create(addressDTO: AddressDTO): Promise<AddressDTO> {
+    public async create(addressDTO: UserDTO): Promise<UserDTO> {
         // return await this.addressRepository.persist(addressDTO);
     }
 
-    public async update(addressDTO: AddressDTO): Promise<AddressDTO> {
+    public async update(addressDTO: UserDTO): Promise<UserDTO> {
         // return await this.addressRepository.persist(addressDTO);
     }
 
-    public async find(id: string): Promise<AddressDTO> {
+    public async find(id: string): Promise<UserDTO> {
         // return await this.addressRepository.findOneById(id);
     }*/
 }
