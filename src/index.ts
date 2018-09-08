@@ -8,6 +8,7 @@ import { DBConnection } from './lib/db/dbConnection';
 import { RequestHooks } from './lib/middleware/requestHooks';
 import TYPES from './types';
 import { logger } from './util/Logger';
+import { APP } from './constants/index';
 
 // Get database functions
 const database = container.resolve(DBConnection);
@@ -43,8 +44,8 @@ app.use(middleware.handleResponse);
 app.use(middleware.handle404ErrorResponse);
 
 // Start express server
-app.listen(process.env.PORT || 3000, () => {
-    logger.info('App listening on port 3000!');
+app.listen(APP.PORT, () => {
+    logger.info('App listening on port ' + APP.PORT + '!');
 });
 
 process.on('uncaughtException', (err) => {
