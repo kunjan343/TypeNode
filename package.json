@@ -1,6 +1,6 @@
 {
     "name": "type-node",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Advance typescript node server for enterprise applications",
     "main": "src/index.ts",
     "scripts": {
