@@ -13,7 +13,9 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-  run: "npm start"
+  run:
+    - "npm run build"
+    - "npm start"
 branches:
   only:
   - development
@@ -21,7 +23,6 @@ before_install:
   - npm install -g nodemon
   - npm install -g ts-node
   - npm install -g tslint
-before_script:
+script:
   - npm run lint
-before_deploy:
   - npm run build
