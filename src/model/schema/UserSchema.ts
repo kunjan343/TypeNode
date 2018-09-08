@@ -1,33 +1,21 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-export interface AddressDTO {
+export interface IUser {
     _id?: string;
-    address1: string;
-    address2?: string;
-    city: string;
-    state: string;
-    zip: string;
-    country: string;
+    username: string;
+    password: string;
 }
 
 /**
  * TypeORM Schema Config
  */
-@Entity('address')
-export class AddressDbSchema implements AddressDTO {
+@Entity('users')
+export class UserSchema implements IUser {
     @PrimaryColumn()
     // tslint:disable-next-line:variable-name
     public _id?: string;
     @Column()
-    public address1: string;
+    public username: string;
     @Column()
-    public address2?: string;
-    @Column()
-    public city: string;
-    @Column()
-    public state: string;
-    @Column()
-    public zip: string;
-    @Column()
-    public country: string;
+    public password: string;
 }

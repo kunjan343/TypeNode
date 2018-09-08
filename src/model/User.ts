@@ -1,35 +1,15 @@
-export class Address {
-    constructor(private address1: string,
-                private address2: string,
-                private city: string,
-                private state: string,
-                private zip: string,
-                private country: string,
+export class User {
+    constructor(private username: string,
+                private password: string,
                 private id?: string) {
     }
 
-    get getAddress1(): string {
-        return this.address1;
+    get getUsername(): string {
+        return this.username;
     }
 
-    get getAddress2(): string {
-        return this.address2;
-    }
-
-    get getCity(): string {
-        return this.city;
-    }
-
-    get getState(): string {
-        return this.state;
-    }
-
-    get getZip(): string {
-        return this.zip;
-    }
-
-    get getCountry(): string {
-        return this.country;
+    get getPassword(): string {
+        return this.password;
     }
 
     get getId(): string {
