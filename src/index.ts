@@ -2,13 +2,13 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
 import 'reflect-metadata';
+import { APP } from './constants/index';
 import { IRoutes } from './interfaces/route/IRoutes';
 import container from './inversify.config';
 import { DBConnection } from './lib/db/dbConnection';
 import { RequestHooks } from './lib/middleware/requestHooks';
 import TYPES from './types';
 import { logger } from './util/Logger';
-import { APP } from './constants/index';
 
 // Get database functions
 const database = container.resolve(DBConnection);
