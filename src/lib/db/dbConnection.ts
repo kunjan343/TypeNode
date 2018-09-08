@@ -3,6 +3,7 @@ import { Connection, createConnection, getConnection } from 'typeorm';
 import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
 import { UserSchema } from '../../model/schema/UserSchema';
 import { logger } from '../../util/Logger';
+import { DATABASE } from '../../constants/index';
 
 export interface IDBConnection {
     connect(req: IReq, res: IRes, next: INext): IReqFunc;
@@ -18,21 +19,11 @@ export class DBConnection implements IDBConnection {
                 return next();
             }
         } catch (error) {
-            logger.info('connection is not active, trying to create new one');
+            logger.info('disconnected, creating new one');
         }
         try {
             // Create new connection
-            await createConnection({
-                type: 'mongodb',
-                host: 'localhost',
-                port: 27017,
-                database: 'typeorm-test',
-                logging: true,
-                synchronize: true,
-                entities: [
-                    UserSchema
-                ]
-            });
+            await createConnection(DATABASE.CONNECTION_OPTIONS);
             logger.info('Database connection established');
             return next();
         } catch (error) {
