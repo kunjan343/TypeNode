@@ -10,6 +10,10 @@
         "lint": "tslint 'src/**/*.ts' -t verbose --force",
         "test": "ts-node node_modules/.bin/tape './test/**/*.spec.ts' | node_modules/.bin/tap-spec"
     },
+    "engines": {
+        "node": "8.9.1",
+        "npm": "5.5.1"
+    },
     "author": "Kunjan Patel",
     "dependencies": {
         "body-parser": "^1.18.3",
