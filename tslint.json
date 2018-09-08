@@ -1,18 +1,35 @@
 {
-  "extends": "tslint:recommended",
-  "formatter": "json",
-  "rules": {
-    "quotemark": [
-      true,
-      "single"
-    ],
-    "no-var-requires": false,
-    "interface-name": [
-      true,
-      "never-prefix"
-    ],
-    "max-line-length": [true, 160],
-    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
-    "object-literal-sort-keys": false
-  }
+    "extends": "tslint:recommended",
+    "formatter": "json",
+    "rules": {
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "no-any": false,
+        "no-var-requires": true,
+        "no-reference": true,
+        "only-arrow-functions": true,
+        "no-console": true,
+        "no-construct": true,
+        "no-var-keyword": true,
+        "no-empty-interface": false,
+        "triple-equals": true,
+        "interface-name": [
+            true,
+            "always-prefix"
+        ],
+        "max-line-length": [
+            true,
+            160
+        ],
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "never",
+                "singleline": "never"
+            }
+        ],
+        "object-literal-sort-keys": false
+    }
 }

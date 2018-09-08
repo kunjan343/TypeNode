@@ -1,29 +1,53 @@
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 import * as express from 'express';
-import { RegistrableController } from './controller/RegisterableController';
+import 'reflect-metadata';
+import { IRoutes } from './interfaces/route/IRoutes';
 import container from './inversify.config';
+import { DBConnection } from './lib/db/dbConnection';
+import { RequestHooks } from './lib/middleware/requestHooks';
 import TYPES from './types';
 import { logger } from './util/Logger';
 
+// Get database functions
+const database = container.resolve(DBConnection);
+// Resolve middleware functions
+const middleware = container.resolve(RequestHooks);
+
 // create express application
 const app: express.Application = express();
+
 // let express support JSON bodies
 app.use(bodyParser.json());
 
-// grabs the Controller from IoC container and registers all the endpoints
-const controllers: RegistrableController[] = container.getAll<RegistrableController>(TYPES.Controller);
-controllers.forEach((controller) => controller.register(app));
+// Setup cross-origin-requests
+app.use(cors());
 
-// setup express middleware logging and error handling
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    logger.error(err.stack);
-    next(err);
-});
+// Handle pre request operations
+app.use(middleware.handleRequest);
 
-app.use((err: Error, req: express.Request, res: express.Response) => {
-    res.status(500).send('Internal Server Error');
-});
+// Create database connection
+app.use(database.connect);
 
+// Collect the Routes from container and register endpoints
+const routes: IRoutes[] = container.getAll<IRoutes>(TYPES.Route);
+routes.forEach((route) => route.register(app));
+
+// Handle api error response
+app.use(middleware.handleErrorResponse);
+
+// Handle success response
+app.use(middleware.handleResponse);
+
+// Handle invalid route error
+app.use(middleware.handle404ErrorResponse);
+
+// Start express server
 app.listen(3000, () => {
-    logger.info('Example app listening on port 3000!');
+    logger.info('App listening on port 3000!');
+});
+
+process.on('uncaughtException', (err) => {
+    logger.error('uncaughtException', err);
+    process.exit(0);
 });

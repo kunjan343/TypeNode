@@ -1,5 +1,5 @@
 import * as express from 'express';
 
-export interface RegistrableController {
+export interface IRoutes {
     register(app: express.Application): void;
 }
