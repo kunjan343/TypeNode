@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import * as test from 'tape';
-import { AddressRoute } from '../src/routes/AddressRoute';
+import { AddressRoute } from '../src/routes/UserRoute';
 
 test('addressController', (t) => {
     t.plan(1);
