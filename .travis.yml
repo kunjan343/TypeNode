@@ -13,9 +13,6 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-  run:
-    - "npm run build"
-    - "npm start"
 branches:
   only:
   - development
