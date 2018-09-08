@@ -1,4 +1,10 @@
 language: node_js
+node_js:
+  - "8.9.1"
+before_script:
+  - npm install -g tslint
+  - npm install -g nodemon
+  - npm install -g ts-node
 deploy:
   provider: heroku
   api_key:
