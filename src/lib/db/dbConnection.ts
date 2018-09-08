@@ -1,9 +1,8 @@
 import { injectable } from 'inversify';
 import { Connection, createConnection, getConnection } from 'typeorm';
-import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
-import { UserSchema } from '../../model/schema/UserSchema';
-import { logger } from '../../util/Logger';
 import { DATABASE } from '../../constants/index';
+import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
+import { logger } from '../../util/Logger';
 
 export interface IDBConnection {
     connect(req: IReq, res: IRes, next: INext): IReqFunc;
