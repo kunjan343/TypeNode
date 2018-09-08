@@ -6,7 +6,7 @@
             true,
             "single"
         ],
-        "no-any": true,
+        "no-any": false,
         "no-var-requires": true,
         "no-reference": true,
         "only-arrow-functions": true,
