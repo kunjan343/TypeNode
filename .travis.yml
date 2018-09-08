@@ -1,10 +1,9 @@
 language: node_js
 node_js:
   - "8.9.1"
-before_script:
-  - npm install -g tslint
-  - npm install -g nodemon
-  - npm install -g ts-node
+cache:
+  directories:
+    - "node_modules"
 deploy:
   provider: heroku
   api_key:
@@ -13,3 +12,11 @@ deploy:
   strategy: git
   run:
     - "npm start"
+before_install:
+  - npm install -g nodemon
+  - npm install -g ts-node
+  - npm install -g tslint
+before_script:
+  - npm run lint
+before_deploy:
+  - npm run build

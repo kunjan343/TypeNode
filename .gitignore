@@ -3,4 +3,6 @@ node_modules/
 tmp/sqlitedb.db
 .DS_Store
 
+dist
+
 package-lock.json
