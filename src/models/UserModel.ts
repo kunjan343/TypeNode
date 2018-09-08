@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Repository } from 'typeorm';
-import { UserDbSchema, UserDTO } from '../model/schema/UserSchema';
+import { IUser, UserSchema } from '../model/schema/UserSchema';
 
 export interface IUserModel {
     /*findAll(): Promise<UserDTO[]>;
@@ -15,7 +15,7 @@ export interface IUserModel {
 @injectable()
 export class UserModel implements IUserModel {
 
-    private addressRepository: Repository<UserDbSchema>;
+    private addressRepository: Repository<UserSchema>;
 
     constructor() {
         // this.addressRepository = connection.getRepository(UserDbSchema);

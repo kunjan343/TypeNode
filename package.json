@@ -5,10 +5,14 @@
     "main": "src/index.ts",
     "scripts": {
         "live": "nodemon",
-        "start": "ts-node src/index.ts",
+        "start": "node dist/index.js",
         "debug": "nodemon --exec 'ts-node -d src/index.ts'",
-        "lint": "tslint 'src/**/*.ts' -t verbose --force",
-        "test": "ts-node node_modules/.bin/tape './test/**/*.spec.ts' | node_modules/.bin/tap-spec"
+        "build": "tsc",
+        "lint": "tslint 'src/**/*.ts' -t verbose --force"
+    },
+    "engines": {
+        "node": "8.9.1",
+        "npm": "5.5.1"
     },
     "author": "Kunjan Patel",
     "dependencies": {

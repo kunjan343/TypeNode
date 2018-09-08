@@ -43,7 +43,7 @@ app.use(middleware.handleResponse);
 app.use(middleware.handle404ErrorResponse);
 
 // Start express server
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     logger.info('App listening on port 3000!');
 });
 
