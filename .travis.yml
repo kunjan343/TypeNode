@@ -10,14 +10,16 @@ deploy:
     secure: "dbaf1dc8-4cbd-48af-ba22-63a91742a2f8"
   app: typenode
   strategy: git
+  skip_cleanup: true
+  on: master
 branches:
   only:
   - development
+  - master
 before_install:
   - npm install -g nodemon
   - npm install -g ts-node
   - npm install -g tslint
-before_script:
+script:
   - npm run lint
-before_deploy:
   - npm run build
