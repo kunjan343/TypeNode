@@ -1,5 +1,7 @@
 # Node.js seed project for typescript starter server app
 
+![Travis build](https://travis-ci.org/kunjan343/TypeNode.svg?branch=master)
+
 ### Pre-require library
 - `npm install -g nodemon`
 - `npm install -g ts-node`
