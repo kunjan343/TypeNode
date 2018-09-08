@@ -10,6 +10,8 @@ import { RequestHooks } from './lib/middleware/requestHooks';
 import TYPES from './types';
 import { logger } from './util/Logger';
 
+declare const process;
+
 // Get database functions
 const database = container.resolve(DBConnection);
 // Resolve middleware functions
