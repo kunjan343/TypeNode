@@ -8,7 +8,7 @@ export const DATABASE = {
         type: 'mongodb',
         host: process.env.DB_HOST || 'localhost',
         port: process.env.DB_PORT || 27017,
-        ssl: process.env.DB_SSL || false,
+        ssl: process.env.DB_SSL === 'enable',
         username: process.env.DB_USERNAME || '',
         password: process.env.DB_PASSWORD || '',
         replicaSet: process.env.DB_REPLICASET || '',
