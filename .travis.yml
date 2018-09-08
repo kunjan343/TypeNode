@@ -10,8 +10,6 @@ deploy:
     secure: "dbaf1dc8-4cbd-48af-ba22-63a91742a2f8"
   app: typenode
   strategy: git
-  run:
-    - "npm start"
 before_install:
   - npm install -g nodemon
   - npm install -g ts-node
