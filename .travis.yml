@@ -11,11 +11,11 @@ deploy:
   app: typenode
   strategy: git
   skip_cleanup: true
-  on:
-    all_branches: true
+  on: master
 branches:
   only:
   - development
+  - master
 before_install:
   - npm install -g nodemon
   - npm install -g ts-node
