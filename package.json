@@ -17,6 +17,7 @@
         "express": "^4.16.3",
         "inversify": "^4.13.0",
         "lodash": "^4.17.10",
+        "mongodb": "^3.1.4",
         "reflect-metadata": "^0.1.12",
         "typeorm": "^0.2.7",
         "winston": "^3.1.0"

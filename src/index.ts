@@ -4,14 +4,19 @@ import * as express from 'express';
 import 'reflect-metadata';
 import { IRoutes } from './interfaces/route/IRoutes';
 import container from './inversify.config';
+import { DBConnection } from './lib/db/dbConnection';
 import TYPES from './types';
 import { logger } from './util/Logger';
+
+const database = container.resolve(DBConnection);
 
 // create express application
 const app: express.Application = express();
 // let express support JSON bodies
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use(database.connect);
 
 // grabs the Controller from IoC container and registers all the endpoints
 const routes: IRoutes[] = container.getAll<IRoutes>(TYPES.Route);
