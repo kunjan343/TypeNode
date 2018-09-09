@@ -7,14 +7,16 @@
         "types": [
             "reflect-metadata"
         ],
-        "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "lib": [
             "es6",
             "dom"
         ],
-        "allowUnreachableCode": true
+        "allowUnreachableCode": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "exclude": [
         "node_modules",

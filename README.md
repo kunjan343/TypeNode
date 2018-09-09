@@ -17,17 +17,14 @@ or
 - Run `set(windows)/export(linux) NODE_ENV=development/production`.
 - This project uses `nodemon` to auto reflect new changes on development time.
 - Simply run `npm run live` to reflect new changes.
-- Run `npm start` to run production server.
 
-### Debugging project
-- Run `npm run debug` to run debugging server.
+### Production server
+- Run `npm run build` to build project into javascript es2015 target.
+- Run `npm start` to run the build project.
 
 ### Ts-lint project
 - Run `npm run lint` to perform **tslint** on all source files.
 - Config **tslint.json** to prefer your coding style.
-
-### Running test case
-- Run `npm run test` to perform **tape** test framework.
 
 ## Core Libraries
 - [ExpressJS](http://expressjs.com/) - node web framework
