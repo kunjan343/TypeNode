@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import { Connection, createConnection, getConnection } from 'typeorm';
-import { DATABASE } from '../../constants/index';
-import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
-import { logger } from '../../util/Logger';
+import { DATABASE } from '../constants/index';
+import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
+import { logger } from './logger';
 
 declare const process;
 
