@@ -6,7 +6,6 @@
     "scripts": {
         "live": "nodemon",
         "start": "node dist/index.js",
-        "debug": "nodemon --exec 'ts-node -d src/index.ts'",
         "build": "tsc",
         "lint": "tslint 'src/**/*.ts' -t verbose --force"
     },
