@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { injectable } from 'inversify';
-import { IRoutes } from '../interfaces/route/IRoutes';
+import { IRoutes } from '../interfaces/IRoutes';
 
 @injectable()
 export class DefaultRoute implements IRoutes {

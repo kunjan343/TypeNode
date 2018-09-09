@@ -1,9 +1,11 @@
 const TYPES = {
-    UserModel: Symbol('UserModel'),
-    UserService: Symbol('UserService'),
     Route: Symbol('Route'),
     DBConnection: Symbol('DBConnection'),
-    RequestHooks: Symbol('RequestHooks')
+    RequestHooks: Symbol('RequestHooks'),
+    UserModel: Symbol('UserModel'),
+    UserOpsService: Symbol('UserOpsService'),
+    UserController: Symbol('UserController'),
+    UserValidationService: Symbol('UserValidationService')
 };
 
 export default TYPES;
