@@ -6,9 +6,9 @@ import { APP } from './constants/index';
 import { IRoutes } from './interfaces/IRoutes';
 import container from './inversify.config';
 import { DBConnection } from './lib/dbConnection';
+import { logger } from './lib/logger';
 import { RequestHooks } from './lib/requestHooks';
 import TYPES from './types';
-import { logger } from './lib/logger';
 
 declare const process;
 
