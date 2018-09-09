@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
-import { UserSchema } from '../model/schema/UserSchema';
+import { UserSchema } from '../database/schema/UserSchema';
 
 declare const process;
 
@@ -23,5 +23,10 @@ export const DATABASE = {
 };
 
 export const APP = {
-    PORT: process.env.PORT || 3000
+    PORT: process.env.PORT || 3000,
+    ROUTE_PREFIX: process.env.ROUTE_PREFIX || '/api/v1/'
+};
+
+export const ROUTES = {
+    USER: 'user'
 };

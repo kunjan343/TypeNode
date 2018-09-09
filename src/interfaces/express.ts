@@ -2,6 +2,7 @@ import * as express from 'express';
 
 export interface IReq extends express.Request {
     data: any;
+    userStore: any;
 }
 
 export interface IRes extends express.Response {
