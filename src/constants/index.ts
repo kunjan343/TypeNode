@@ -23,5 +23,10 @@ export const DATABASE = {
 };
 
 export const APP = {
-    PORT: process.env.PORT || 3000
+    PORT: process.env.PORT || 3000,
+    ROUTE_PREFIX: process.env.ROUTE_PREFIX || '/api/v1/'
+};
+
+export const ROUTES = {
+    USER: 'user'
 };
