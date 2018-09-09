@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify';
 import * as _ from 'lodash';
-import { IUser } from '../model/schema/UserSchema';
-import { User } from '../model/User';
-import { UserModel } from '../models/UserModel';
-import TYPES from '../types';
+import { IUser } from '../../model/schema/UserSchema';
+import { User } from '../../model/User';
+import { UserModel } from '../../models/UserModel';
+import TYPES from '../../types';
 
 export interface IUserService {
     /*getUseres(): Promise<User[]>;
@@ -17,8 +17,7 @@ export interface IUserService {
 
 @injectable()
 export class UserService implements IUserService {
-    @inject(TYPES.UserModel)
-    private addressModel: UserModel;
+    @inject(TYPES.UserModel) private addressModel: UserModel;
 
     /*public async getUseres(): Promise<User[]> {
         /!*!// grab addresses from mongo
