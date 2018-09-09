@@ -2,7 +2,7 @@ import { injectable } from 'inversify';
 import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
 
 export interface IUserController {
-
+    userData(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
 @injectable()
