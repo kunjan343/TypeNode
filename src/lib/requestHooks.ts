@@ -1,7 +1,7 @@
 import { ErrorRequestHandler } from 'express';
 import { injectable } from 'inversify';
 import * as _ from 'lodash';
-import { INext, IReq, IReqFunc, IRes } from '../../interfaces/common/express';
+import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
 
 export interface IRequestHooks {
     handleRequest(req: IReq, res: IRes, next: INext): IReqFunc;

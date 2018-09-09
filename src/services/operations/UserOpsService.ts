@@ -1,24 +1,33 @@
 import { inject, injectable } from 'inversify';
-import * as _ from 'lodash';
-import { IUser } from '../model/schema/UserSchema';
-import { User } from '../model/User';
-import { UserModel } from '../models/UserModel';
-import TYPES from '../types';
+import { IUser } from '../../database/schema/UserSchema';
+import { INext, IReq, IReqFunc, IRes } from '../../interfaces/express';
+import { logger } from '../../lib/logger';
+import { UserModel } from '../../models/UserModel';
+import TYPES from '../../types';
 
-export interface IUserService {
-    /*getUseres(): Promise<User[]>;
-
-    createUser(address: User): Promise<User>;
-
-    updateUser(address: User): Promise<User>;
-
-    getUser(id: string): Promise<User>;*/
+export interface IUserOpsService {
+    createUser(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
 @injectable()
-export class UserService implements IUserService {
-    @inject(TYPES.UserModel)
-    private addressModel: UserModel;
+export class UserOpsService implements IUserOpsService {
+    @inject(TYPES.UserModel) private userModel: UserModel;
+
+    public createUser: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
+        try {
+            const params = req.params;
+            const user: IUser = {
+                username: params.username,
+                password: params.password
+            };
+            await this.userModel.create(user);
+            req.userStore = {message: 'User registered'};
+            return next();
+        } catch (error) {
+            logger.error('createUser', error);
+            return next(error);
+        }
+    }
 
     /*public async getUseres(): Promise<User[]> {
         /!*!// grab addresses from mongo
