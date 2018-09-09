@@ -3,12 +3,12 @@ import * as cors from 'cors';
 import * as express from 'express';
 import 'reflect-metadata';
 import { APP } from './constants/index';
-import { IRoutes } from './interfaces/route/IRoutes';
+import { IRoutes } from './interfaces/IRoutes';
 import container from './inversify.config';
-import { DBConnection } from './lib/db/dbConnection';
-import { RequestHooks } from './lib/middleware/requestHooks';
+import { DBConnection } from './lib/dbConnection';
+import { RequestHooks } from './lib/requestHooks';
 import TYPES from './types';
-import { logger } from './util/Logger';
+import { logger } from './lib/logger';
 
 declare const process;
 

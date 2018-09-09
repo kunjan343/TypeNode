@@ -1,39 +1,16 @@
 import { injectable } from 'inversify';
-import { Repository } from 'typeorm';
-import { IUser, UserSchema } from '../model/schema/UserSchema';
+import { IUser } from '../database/schema/UserSchema';
 
 export interface IUserModel {
-    /*findAll(): Promise<UserDTO[]>;
-
-    create(addressDTO: UserDTO): Promise<UserDTO>;
-
-    update(addressDTO: UserDTO): Promise<UserDTO>;
-
-    find(id: string): Promise<UserDTO>;*/
+    create(user: IUser): Promise<IUser>;
 }
 
 @injectable()
 export class UserModel implements IUserModel {
 
-    private addressRepository: Repository<UserSchema>;
-
-    constructor() {
-        // this.addressRepository = connection.getRepository(UserDbSchema);
+    public create = (user: IUser): Promise<IUser> => {
+        return new Promise<IUser>((resolve) => {
+            resolve(user);
+        });
     }
-
-    /*public async findAll(): Promise<UserDTO[]> {
-        // return await this.addressRepository.find();
-    }
-
-    public async create(addressDTO: UserDTO): Promise<UserDTO> {
-        // return await this.addressRepository.persist(addressDTO);
-    }
-
-    public async update(addressDTO: UserDTO): Promise<UserDTO> {
-        // return await this.addressRepository.persist(addressDTO);
-    }
-
-    public async find(id: string): Promise<UserDTO> {
-        // return await this.addressRepository.findOneById(id);
-    }*/
 }

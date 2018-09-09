@@ -17,6 +17,7 @@
     "author": "Kunjan Patel",
     "dependencies": {
         "body-parser": "^1.18.3",
+        "boom": "^7.2.0",
         "cors": "^2.8.4",
         "express": "^4.16.3",
         "inversify": "^4.13.0",
@@ -28,8 +29,10 @@
     },
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
+        "@types/boom": "^7.2.0",
         "@types/express": "^4.16.0",
         "@types/lodash": "^4.14.116",
+        "@types/mongodb": "^3.1.4",
         "@types/node": "^10.9.4",
         "@types/tape": "^4.2.32",
         "@types/winston": "^2.4.4",
