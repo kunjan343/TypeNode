@@ -1,5 +1,6 @@
 import { injectable } from 'inversify';
-import { IUser } from '../database/schema/UserSchema';
+import { getRepository, InsertResult } from 'typeorm';
+import { IUser, UserSchema } from '../database/UserSchema';
 
 export interface IUserModel {
     create(user: IUser): Promise<IUser>;
@@ -9,8 +10,6 @@ export interface IUserModel {
 export class UserModel implements IUserModel {
 
     public create = (user: IUser): Promise<IUser> => {
-        return new Promise<IUser>((resolve) => {
-            resolve(user);
-        });
+        return getRepository(UserSchema).save(user);
     }
 }
