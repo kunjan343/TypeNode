@@ -13,7 +13,11 @@
         "node": "8.9.1",
         "npm": "5.5.1"
     },
-    "author": "Kunjan Patel",
+    "author": {
+        "name": "Kunjan Patel",
+        "email": "kunjanpatelrock@gmail.com"
+    },
+    "homepage": "https://github.com/kunjan343/TypeNode",
     "dependencies": {
         "body-parser": "^1.18.3",
         "boom": "^7.2.0",

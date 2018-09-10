@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Connection, createConnection, getConnection } from 'typeorm';
-import { DATABASE } from '../constants/index';
+import { DATABASE } from '../constants/server';
 import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
 import { logger } from './logger';
 
@@ -24,12 +24,13 @@ export class DBConnection implements IDBConnection {
                 return next();
             }
         } catch (error) {
-            logger.info('disconnected, creating new one');
+            logger.warn('DB : database connection offline');
         }
         try {
             // Create new connection
+            logger.info('DB : trying to connect database....');
             await createConnection(DATABASE.CONNECTION_OPTIONS);
-            logger.info('Database connection established');
+            logger.info('DB : Database connection established');
             return next();
         } catch (error) {
             logger.error('error', error);

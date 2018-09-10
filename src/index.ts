@@ -2,7 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
 import 'reflect-metadata';
-import { APP } from './constants/index';
+import { APP } from './constants/server';
 import { IRoutes } from './interfaces/IRoutes';
 import container from './inversify.config';
 import { DBConnection } from './lib/dbConnection';

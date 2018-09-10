@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { inject, injectable } from 'inversify';
-import { APP, ROUTES } from '../constants/index';
+import { APP, ROUTES } from '../constants/server';
 import { UserController } from '../controller/UserController';
 import { IRoutes } from '../interfaces/IRoutes';
 import { UserOpsService } from '../services/operations/UserOpsService';
