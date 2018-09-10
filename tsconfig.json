@@ -13,7 +13,9 @@
             "es6",
             "dom"
         ],
-        "allowUnreachableCode": true,
+        "diagnostics": true,
+        "listFiles": true,
+        "allowUnreachableCode": false,
         "typeRoots": [
             "node_modules/@types"
         ]

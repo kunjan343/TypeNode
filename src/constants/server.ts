@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
-import { UserSchema } from '../database/schema/UserSchema';
+import { UserSchema } from '../database/UserSchema';
 
 declare const process;
 
