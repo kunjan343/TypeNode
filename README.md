@@ -2,8 +2,8 @@
 
 
 ![Travis build](https://travis-ci.org/kunjan343/TypeNode.svg?branch=master)
-[![dependencies Status](https://david-dm.org/kunjan343/TypeNode/status.svg)](https://david-dm.org/kunjan343/TypeNode)
-[![devDependencies Status](https://david-dm.org/kunjan343/TypeNode/dev-status.svg)](https://david-dm.org/kunjan343/TypeNode?type=dev)
+![dependencies Status](https://david-dm.org/kunjan343/TypeNode/status.svg)
+![devDependencies Status](https://david-dm.org/kunjan343/TypeNode/dev-status.svg)
 
 ### Pre-require library
 - `npm install -g nodemon`
