@@ -2,8 +2,8 @@
 
 
 ![Travis build](https://travis-ci.org/kunjan343/TypeNode.svg?branch=master)
-![dependencies Status](https://david-dm.org/kunjan343/TypeNode/status.svg)
-![devDependencies Status](https://david-dm.org/kunjan343/TypeNode/dev-status.svg)
+[![dependencies Status](https://david-dm.org/kunjan343/TypeNode/status.svg)](https://david-dm.org/kunjan343/TypeNode)
+[![devDependencies Status](https://david-dm.org/kunjan343/TypeNode/dev-status.svg)](https://david-dm.org/kunjan343/TypeNode?type=dev)
 [![codecov](https://codecov.io/gh/kunjan343/TypeNode/branch/master/graph/badge.svg)](https://codecov.io/gh/kunjan343/TypeNode)
 
 
