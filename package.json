@@ -7,11 +7,25 @@
         "live": "nodemon",
         "start": "node dist/index.js",
         "build": "tsc",
-        "lint": "tslint 'src/**/*.ts' -t verbose --force"
+        "lint": "tslint 'src/**/*.ts' -t verbose --force",
+        "test": "nyc mocha -r ts-node/register ./test/**/*.ts",
+        "codecov": "nyc report --reporter=json && codecov -f coverage/*.json"
     },
+    "keywords": [
+        "typescript",
+        "nodejs",
+        "typenode",
+        "enterprise",
+        "server",
+        "express"
+    ],
     "engines": {
         "node": "8.9.1",
         "npm": "5.5.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kunjan343/TypeNode.git"
     },
     "author": {
         "name": "Kunjan Patel",
@@ -33,17 +47,42 @@
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
         "@types/boom": "^7.2.0",
+        "@types/chai": "^4.1.4",
         "@types/express": "^4.16.0",
         "@types/lodash": "^4.14.116",
+        "@types/mocha": "^5.2.5",
         "@types/mongodb": "^3.1.4",
         "@types/node": "^10.9.4",
         "@types/tape": "^4.2.32",
         "@types/winston": "^2.4.4",
+        "chai": "^4.1.2",
+        "codecov": "^3.1.0",
+        "mocha": "^5.2.0",
         "nodemon": "^1.18.4",
+        "nyc": "^13.0.1",
         "tap-spec": "^5.0.0",
         "tape": "^4.9.1",
         "ts-node": "^7.0.1",
         "tslint": "^5.11.0",
         "typescript": "^3.0.3"
+    },
+    "nyc": {
+        "include": [
+            "src/**/*.ts"
+        ],
+        "exclude": [
+            "test/**/*.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "report": true,
+        "reporter": [
+            "json"
+        ],
+        "all": true
     }
 }

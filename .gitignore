@@ -1,10 +1,21 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# editor files
 .idea/
-node_modules/
 tmp/sqlitedb.db
 .DS_Store
 
-dist
-
+# node modules
+node_modules/
 package-lock.json
 
-credentials.txt
+# build
+dist
+
+# Coverage directory used by tools like istanbul
+coverage
+.nyc_output
+coverage.*

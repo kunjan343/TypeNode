@@ -27,6 +27,9 @@ or
 - Run `npm run build` to build project into javascript es2015 target.
 - Run `npm start` to run the build project.
 
+### Running test cases
+- Run `npm test` to run test cases.
+
 ### Ts-lint project
 - Run `npm run lint` to perform **tslint** on all source files.
 - Config **tslint.json** to prefer your coding style.
