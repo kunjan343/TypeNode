@@ -7,7 +7,7 @@ export interface IDefaultSchema {
 }
 
 @Entity()
-export class DefaultSchema {
+export class DefaultSchema implements IDefaultSchema {
     @ObjectIdColumn()
     // tslint:disable-next-line:variable-name
     public _id: ObjectID;
