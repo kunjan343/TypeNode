@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { getRepository, InsertResult } from 'typeorm';
+import { getRepository } from 'typeorm';
 import { IUser, UserSchema } from '../database/UserSchema';
 
 export interface IUserModel {

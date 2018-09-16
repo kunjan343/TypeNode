@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
+        "baseUrl": ".",
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es2015",
         "types": [
             "reflect-metadata"
         ],
+        "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "lib": [
