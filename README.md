@@ -10,7 +10,6 @@
 ### Pre-require library
 - `npm install -g nodemon`
 - `npm install -g ts-node`
-- `npm install -g codecov`
 - `npm install -g tslint` <br>
 or 
 - Setup run commands to use it from local dependency.
