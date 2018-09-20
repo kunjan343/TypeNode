@@ -54,3 +54,5 @@ process.on('uncaughtException', (err) => {
     logger.error('uncaughtException', err);
     process.exit(0);
 });
+
+export { app };
