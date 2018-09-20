@@ -15,6 +15,7 @@
         "no-var-keyword": true,
         "no-empty-interface": false,
         "triple-equals": true,
+        "ordered-imports": false,
         "interface-name": [
             true,
             "always-prefix"
