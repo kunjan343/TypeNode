@@ -12,7 +12,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "lib": [
-            "es6",
+            "es2015",
             "dom"
         ],
         "diagnostics": true,
@@ -24,7 +24,9 @@
     },
     "exclude": [
         "node_modules",
-        "test/**/*.ts"
+        "test/**/*.ts",
+        "src/generate.ts",
+        "src/lib/generator/*.ts"
     ],
     "include": [
         "src/**/*"
