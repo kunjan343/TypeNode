@@ -30,3 +30,7 @@ export const APP = {
 export const ROUTES = {
     USER: 'user'
 };
+
+export const MESSAGE = {
+    INVALID_ROUTE: 'Invalid request'
+};

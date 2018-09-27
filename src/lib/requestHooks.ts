@@ -2,6 +2,7 @@ import { ErrorRequestHandler } from 'express';
 import { injectable } from 'inversify';
 import * as _ from 'lodash';
 import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
+import { MESSAGE } from '../constants/server';
 
 export interface IRequestHooks {
     handleRequest(req: IReq, res: IRes, next: INext): IReqFunc;
@@ -32,7 +33,6 @@ export class RequestHooks implements IRequestHooks {
             }
         });
 
-        // utils.setBaseUrl(req);
         return next();
     }
 
@@ -71,6 +71,6 @@ export class RequestHooks implements IRequestHooks {
     }
 
     public handle404ErrorResponse: IReqFunc = (req: IReq, res: IRes, next: INext) => {
-        return next(new Error('Invalid request'));
+        return next(new Error(MESSAGE.INVALID_ROUTE));
     }
 }
