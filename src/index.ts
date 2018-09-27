@@ -47,7 +47,7 @@ app.use(middleware.handle404ErrorResponse);
 
 // Start express server
 app.listen(APP.PORT, () => {
-    logger.info('App listening on port ' + APP.PORT + '!');
+    logger.info('App listening on port ' + APP.PORT + '!\n');
 });
 
 process.on('uncaughtException', (err) => {

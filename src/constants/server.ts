@@ -32,5 +32,6 @@ export const ROUTES = {
 };
 
 export const MESSAGE = {
-    INVALID_ROUTE: 'Invalid request'
+    INVALID_ROUTE: 'Invalid request',
+    SERVER_LISTENING: 'Sample server is listening!'
 };
