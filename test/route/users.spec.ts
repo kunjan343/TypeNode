@@ -1,8 +1,8 @@
+import 'mocha';
+import 'reflect-metadata';
 import { expect, should } from 'chai';
 import * as request from 'supertest';
 import { app } from '../../src/index';
-import 'mocha';
-import 'reflect-metadata';
 import { UserRoute } from '../../src/routes/UserRoute';
 import { APP, ROUTES } from '../../src/constants/server';
 import { USER_MESSAGE } from '../../src/constants/message/user.message';
