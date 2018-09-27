@@ -6,6 +6,7 @@ import { logger } from '../../lib/logger';
 import { ObjectHandler } from '../../lib/objectHandler';
 import { UserModel } from '../../models/UserModel';
 import TYPES from '../../types';
+import { USER_MESSAGE } from '../../constants/message/user.message';
 
 export interface IUserOpsService {
     createUser(req: IReq, res: IRes, next: INext): IReqFunc;
@@ -21,7 +22,7 @@ export class UserOpsService implements IUserOpsService {
         try {
             const user: IUser = this.objectHandler.filterObject(req.params, FIELDS.USER);
             await this.userModel.create(user);
-            req.userStore = {message: 'User registered'};
+            req.userStore = {message: USER_MESSAGE.SUCCESS.CREATE};
             return next();
         } catch (error) {
             logger.error('createUser', error);
