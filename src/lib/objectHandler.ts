@@ -3,13 +3,26 @@ import * as _ from 'lodash';
 import { FIELDS } from '../constants/model';
 import { logger } from './logger';
 
+/**
+ * Object handler class interface
+ */
 export interface IObjectHandler {
     filterObject(data: any, fields: string[]): object;
 }
 
+/**
+ * Implements common object manipulation methods
+ */
 @injectable()
 export class ObjectHandler implements IObjectHandler {
 
+    /**
+     * Filter specified fields from object.
+     * Useful for creating database object.
+     * @param data      object data
+     * @param fields    list of object fields
+     * @returns         generated object data
+     */
     public filterObject = (data: object, fields: string[]): any => {
         try {
             fields = FIELDS.DEFAULT.concat(fields);

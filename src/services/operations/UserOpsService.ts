@@ -8,16 +8,29 @@ import { UserModel } from '../../models/UserModel';
 import TYPES from '../../types';
 import { USER_MESSAGE } from '../../constants/message/user.message';
 
+/**
+ * Define methods for user operation functions
+ */
 export interface IUserOpsService {
     createUser(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
+/**
+ * User service to handle api operation based function
+ */
 @injectable()
 export class UserOpsService implements IUserOpsService {
     // Injectable
     @inject(TYPES.UserModel) private userModel: UserModel;
     @inject(TYPES.ObjectHandler) private objectHandler: ObjectHandler;
 
+    /**
+     * Call and create new user into database
+     * @param req   api request object
+     * @param res   api request object
+     * @param next  next function call
+     * @returns     request handler function
+     */
     public createUser: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
         try {
             const user: IUser = this.objectHandler.filterObject(req.params, FIELDS.USER);

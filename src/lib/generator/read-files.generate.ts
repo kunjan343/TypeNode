@@ -4,6 +4,9 @@ import * as path from 'path';
 import { EXCLUDE_FILES } from '../../constants/generator';
 import { logger } from '../logger';
 
+/**
+ * File object structure interface
+ */
 export interface IFileObject {
     name: string;
     path: string;
@@ -12,8 +15,16 @@ export interface IFileObject {
     interfaceName?: string;
 }
 
+/**
+ * Class having methods to create project files list
+ */
 export class FileStructure {
 
+    /**
+     * Get list of all project files and create list
+     * @param dir       path of project root directory
+     * @returns results list of project files having class
+     */
     public readFiles = async (dir) => {
         try {
             const results: IFileObject[] = [];
@@ -72,6 +83,12 @@ export class FileStructure {
         }
     }
 
+    /**
+     * Normalize file path
+     * Function use specifically for simplify path on windows system
+     * @param filePath  full system path of file
+     * @returns string  normalized path name
+     */
     private getNormalizePath = (filePath: string) => {
         return path.normalize(filePath).replace(/\\/g, '/');
     }
