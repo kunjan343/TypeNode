@@ -22,7 +22,7 @@ export class FileGenerator {
             const containerGenerator = new ContainerGenerator();
             await containerGenerator.generateInjects(fileList, __dirname);
             logger.info('   complete');
-            process.exit(0);
+            return __dirname;
         } catch (error) {
             logger.error('File Generation Error:', error);
             process.exit(1);

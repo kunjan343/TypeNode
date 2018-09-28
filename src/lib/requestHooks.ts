@@ -71,6 +71,8 @@ export class RequestHooks implements IRequestHooks {
     }
 
     public handle404ErrorResponse: IReqFunc = (req: IReq, res: IRes, next: INext) => {
-        return next(new Error(MESSAGE.INVALID_ROUTE));
+        const error: any = new Error(MESSAGE.INVALID_ROUTE);
+        error.statucCode = 404;
+        return next(error);
     }
 }
