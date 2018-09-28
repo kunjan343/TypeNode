@@ -4,8 +4,17 @@ import * as fs from 'fs-extra';
 import * as _ from 'lodash';
 import { CONTAINER_FILE } from '../../constants/generator';
 
+/**
+ * Class contain methods to generate container file
+ */
 export class ContainerGenerator {
 
+    /**
+     * Main function to create generator file
+     * @param fileList  list of project files contain class detail
+     * @param filePath  path of root directory
+     * @returns boolean successfully exit on file generation
+     */
     public generateInjects = async (fileList: IFileObject[], filePath: string) => {
         try {
             try {
@@ -24,6 +33,11 @@ export class ContainerGenerator {
         }
     }
 
+    /**
+     * Create string line for import statements
+     * @param fileList  list of project files contain class detail
+     * @returns importText return string of imports
+     */
     private generateImports = async (fileList: IFileObject[]) => {
         try {
             let importText = CONTAINER_FILE.IMPORTS_PREFIX;
@@ -40,6 +54,11 @@ export class ContainerGenerator {
         }
     }
 
+    /**
+     * Create class binding string for container
+     * @param fileList  list of project files contain class detail
+     * @returns bindText return string of bindings
+     */
     private generateBinds = async (fileList: IFileObject[]) => {
         try {
             let bindText = CONTAINER_FILE.BINDS_PREFIX;

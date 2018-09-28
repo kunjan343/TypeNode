@@ -1,4 +1,4 @@
-# Node.js seed project for typescript starter server app
+# Node.js seed project for typescript starter server
 
 
 ![Travis build](https://travis-ci.org/kunjan343/TypeNode.svg?branch=master)
@@ -7,11 +7,13 @@
 [![codecov](https://codecov.io/gh/kunjan343/TypeNode/branch/master/graph/badge.svg)](https://codecov.io/gh/kunjan343/TypeNode)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5cc09f96eff140469a9814204190bbac)](https://www.codacy.com/app/kunjan343/TypeNode?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kunjan343/TypeNode&amp;utm_campaign=Badge_Grade)
 
+Enjoy the project and spread the word.
 
 ### Pre-require library
 - `npm install -g nodemon`
 - `npm install -g ts-node`
-- `npm install -g tslint` <br>
+- `npm install -g tslint`
+- `npm install -g typedoc` <br>
 or 
 - Setup run commands to use it from local dependency.
 
@@ -34,6 +36,18 @@ or
 ### Ts-lint project
 - Run `npm run lint` to perform **tslint** on all source files.
 - Config **tslint.json** to prefer your coding style.
+
+### Extras
+- This sample application has automation with Travis + Heroku + Codecov to demonstrate complete application cycle.
+- Use `your own heroku` key to deploy on your server.
+- `Add project` into `travis` or modify `travis.yml` for your settings.
+- Export your own `codecov key in travis` to auto upload converge reports.
+
+### Badges
+- Build badge is from [Travis](https://travis-ci.org).
+- Dependency check badges are from [David-dm](https://david-dm.org).
+- Code coverage badge is from [Codecov](https://codecov.io).
+- Code quality badge is from [Codacy](https://app.codacy.com).
 
 ## Core Libraries
 - [ExpressJS](http://expressjs.com/) - node web framework
