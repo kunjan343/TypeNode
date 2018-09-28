@@ -7,7 +7,9 @@
 [![codecov](https://codecov.io/gh/kunjan343/TypeNode/branch/master/graph/badge.svg)](https://codecov.io/gh/kunjan343/TypeNode)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5cc09f96eff140469a9814204190bbac)](https://www.codacy.com/app/kunjan343/TypeNode?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kunjan343/TypeNode&amp;utm_campaign=Badge_Grade)
 
-Enjoy the project and spread the word.
+Enjoy the project and spread the word.<br>
+Live server: [Heroku](https://typenode.herokuapp.com/)<br>
+Site: [TypeNode Doc](https://kunjan343.github.io/TypeNode/)
 
 ### Pre-require library
 - `npm install -g nodemon`
