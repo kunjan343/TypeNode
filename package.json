@@ -10,7 +10,7 @@
         "lint": "tslint 'src/**/*.ts' -t verbose --force",
         "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
         "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
-        "generate": "ts-node -e 'src/generate.ts'"
+        "generate": "ts-node src/generate.ts"
     },
     "keywords": [
         "typescript",
