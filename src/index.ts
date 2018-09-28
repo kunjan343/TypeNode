@@ -2,7 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
 import 'reflect-metadata';
-import { APP } from './constants/server';
+import { APP, MESSAGE } from './constants/server';
 import { IRoutes } from './interfaces/IRoutes';
 import container from './inversify.config';
 import { DBConnection } from './lib/dbConnection';
@@ -12,47 +12,74 @@ import TYPES from './types';
 
 declare const process;
 
-// Get database functions
+/**
+ * Get database class access from container
+ */
 const database = container.resolve(DBConnection);
-// Resolve middleware functions
+/**
+ * Get middleware class access from container
+ */
 const middleware = container.resolve(RequestHooks);
 
-// create express application
+/**
+ * Create express application server
+ */
 const app: express.Application = express();
 
-// let express support JSON bodies
+/**
+ * Let express support JSON bodies
+ */
 app.use(bodyParser.json());
 
-// Setup cross-origin-requests
+/**
+ * Allow server to accept cross-origin-requests
+ */
 app.use(cors());
 
-// Handle pre request operations
+/**
+ * Perform pre request execution operations
+ */
 app.use(middleware.handleRequest);
 
-// Create database connection
+/**
+ * Check and Connect database on each request
+ */
 app.use(database.connect);
 
-// Collect the Routes from container and register endpoints
+/**
+ * Collect all routes from container and register classes with application
+ */
 const routes: IRoutes[] = container.getAll<IRoutes>(TYPES.Route);
 routes.forEach((route) => route.register(app));
 
-// Handle api error response
+/**
+ * Handle api error response
+ */
 app.use(middleware.handleErrorResponse);
 
-// Handle success response
+/**
+ * Handle success response
+ */
 app.use(middleware.handleResponse);
 
-// Handle invalid route error
+/**
+ * Handle invalid route error
+ */
 app.use(middleware.handle404ErrorResponse);
 
-// Start express server
+/**
+ * Start express server on given port
+ */
 app.listen(APP.PORT, () => {
-    logger.info('App listening on port ' + APP.PORT + '!\n');
+    logger.info(MESSAGE.APP_LISTEN);
 });
 
+/**
+ * Handle process level errors
+ */
 process.on('uncaughtException', (err) => {
     logger.error('uncaughtException', err);
-    process.exit(0);
+    process.exit(1);
 });
 
 export { app };
