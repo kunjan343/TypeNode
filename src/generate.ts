@@ -6,8 +6,17 @@ import { ContainerGenerator } from './lib/generator/container.generate';
 
 declare const process;
 
+/**
+ * File generator creates two important files in project.
+ */
 export class FileGenerator {
 
+    /**
+     * Collects list of necessary files from project root.
+     * Generate types file based on file list.
+     * Generate container injection based on file list.
+     * @returns Promise<string>   path of project root directory
+     */
     public generate = async () => {
         try {
             logger.info('1) Generating file list...');
@@ -30,5 +39,8 @@ export class FileGenerator {
     }
 }
 
+/**
+ * Create instance of class and call generate method
+ */
 const generator = new FileGenerator();
 generator.generate();

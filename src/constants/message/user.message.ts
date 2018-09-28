@@ -1,3 +1,6 @@
+/**
+ * Store user route messages text
+ */
 export const USER_MESSAGE = {
     SUCCESS: {
         CREATE: 'Successfully created',

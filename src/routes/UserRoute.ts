@@ -7,6 +7,9 @@ import { UserOpsService } from '../services/operations/UserOpsService';
 import { UserValidationService } from '../services/validations/UserValidationService';
 import TYPES from '../types';
 
+/**
+ * Define user routes
+ */
 @injectable()
 export class UserRoute implements IRoutes {
     // Injectable
@@ -17,6 +20,7 @@ export class UserRoute implements IRoutes {
     private userPrefix: string = APP.ROUTE_PREFIX + ROUTES.USER;
 
     public register(app: express.Application): void {
+        // Create user request
         app.route(this.userPrefix + '/register')
           .post([
               this.userValidationService.validateRegisterUser,
