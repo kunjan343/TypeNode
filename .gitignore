@@ -23,3 +23,6 @@ coverage.*
 # auto generate files
 types.ts
 inversify.config.ts
+
+# documentation
+docs
