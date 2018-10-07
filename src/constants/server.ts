@@ -37,7 +37,7 @@ export const APP = {
  * Each route prefix name
  */
 export const ROUTES = {
-    USER: 'user'
+    USER: 'users'
 };
 
 /**
