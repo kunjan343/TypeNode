@@ -34,4 +34,20 @@ export class UserValidationService implements IUserValidationService {
         }
         return next();
     }
+
+    /**
+     * Validate search user request
+     * @param req   api request object
+     * @param res   api request object
+     * @param next  next function call
+     * @returns     request handler function
+     */
+    public validateSearchUser: IReqFunc = (req: IReq, res: IRes, next: INext) => {
+        const params = _.merge(req.body, req.params);
+        req.params = params;
+        if (_.isEmpty(params.username)) {
+            return next(Boom.badRequest(USER_MESSAGE.ERROR.EMPTY.USERNAME));
+        }
+        return next();
+    }
 }

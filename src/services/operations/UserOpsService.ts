@@ -1,3 +1,5 @@
+import * as Boom from 'boom';
+import * as _ from 'lodash';
 import { inject, injectable } from 'inversify';
 import { FIELDS } from '../../constants/model';
 import { IUser } from '../../database/UserSchema';
@@ -33,6 +35,9 @@ export class UserOpsService implements IUserOpsService {
      */
     public createUser: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
         try {
+            if (!_.isEmpty(req.userStore)) {
+                return next(Boom.conflict(USER_MESSAGE.ERROR.CONFLICT.USERNAME));
+            }
             const user: IUser = this.objectHandler.filterObject(req.params, FIELDS.USER);
             await this.userModel.create(user);
             req.userStore = {message: USER_MESSAGE.SUCCESS.CREATE};
@@ -43,43 +48,38 @@ export class UserOpsService implements IUserOpsService {
         }
     }
 
-    /*public async getUseres(): Promise<User[]> {
-        /!*!// grab addresses from mongo
-        const addressesMongo: User[] = await this.addressRepositoryMongo.findAll().then((a) => a.map((dto: UserDTO) => {
-            return this.toUserDTO(dto);
-        }));
-
-        // grab addresses from db
-        const addressesDb: User[] = await this.addressRepositoryDb.findAll().then((a2) => a2.map((dto: UserDTO) => {
-            return this.toUserDTO(dto);
-        }));
-
-        return _.uniqBy(addressesMongo.concat(addressesDb), 'id');*!/
-    }
-
-    public async updateUser(address: User): Promise<User> {
-        const addressDTO: UserDTO = this.toUser(address);
-
-        const updated: UserDTO = await this.addressRepositoryMongo.update(addressDTO);
-
-        // update db address
-        await this.addressRepositoryDb.update(updated);
-
-        return await this.toUserDTO(updated);
-    }
-
-    public async getUser(id: string): Promise<User> {
-        let address = await this.addressRepositoryMongo.find(id).then((a) => {
-            return this.toUserDTO(a);
-        });
-
-        if (!address) {
-            address = await this.addressRepositoryDb.find(id).then((a) => {
-                return this.toUserDTO(a);
-            });
+    /**
+     * Search user by username from database
+     * @param req   api request object
+     * @param res   api request object
+     * @param next  next function call
+     * @returns     request handler function
+     */
+    public searchUserByUsername: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
+        try {
+            const username: string = req.params.username;
+            req.userStore = await this.userModel.searchByUsername(username);
+            return next();
+        } catch (error) {
+            logger.error('createUser', error);
+            return next(error);
         }
-
-        return address;
     }
-    */
+
+    /**
+     * Get all users from database
+     * @param req   api request object
+     * @param res   api request object
+     * @param next  next function call
+     * @returns     request handler function
+     */
+    public searchUsers: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
+        try {
+            req.userStore = await this.userModel.search();
+            return next();
+        } catch (error) {
+            logger.error('createUser', error);
+            return next(error);
+        }
+    }
 }
