@@ -23,4 +23,21 @@ export class UserModel implements IUserModel {
     public create = (user: IUser): Promise<IUser> => {
         return getRepository(UserSchema).save(user);
     }
+
+    /**
+     * Search user by username
+     * @param username
+     * @returns     stored user object
+     */
+    public searchByUsername = (username: string): Promise<IUser> => {
+        return getRepository(UserSchema).findOne({username});
+    }
+
+    /**
+     * Search all users
+     * @returns     users list
+     */
+    public search = (): Promise<IUser[]> => {
+        return getRepository(UserSchema).find();
+    }
 }

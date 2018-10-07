@@ -24,8 +24,24 @@ export class UserRoute implements IRoutes {
         app.route(this.userPrefix + '/register')
           .post([
               this.userValidationService.validateRegisterUser,
+              this.userOpsService.searchUserByUsername,
               this.userOpsService.createUser,
+              this.userController.userList
+          ]);
+
+        // Search user by username
+        app.route(this.userPrefix + '/search/:username')
+          .get([
+              this.userValidationService.validateSearchUser,
+              this.userOpsService.searchUserByUsername,
               this.userController.userData
+          ]);
+
+        // Get all users list
+        app.route(this.userPrefix + '/all')
+          .get([
+              this.userOpsService.searchUsers,
+              this.userController.userList
           ]);
     }
 }

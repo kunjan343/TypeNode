@@ -1,4 +1,5 @@
 import { injectable } from 'inversify';
+import * as _ from 'lodash';
 import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
 
 /**
@@ -21,8 +22,20 @@ export class UserController implements IUserController {
      * @param next    next callback
      * @returns       call next function
      */
+    public userList: IReqFunc = (req: IReq, res: IRes, next: INext) => {
+        req.data = _.isEmpty(req.userStore) ? [] : req.userStore;
+        return next();
+    }
+
+    /**
+     * Collect user data and store in response object
+     * @param req     api request object
+     * @param res     api response object
+     * @param next    next callback
+     * @returns       call next function
+     */
     public userData: IReqFunc = (req: IReq, res: IRes, next: INext) => {
-        req.data = req.userStore;
+        req.data = _.isEmpty(req.userStore) ? {} : req.userStore;
         return next();
     }
 }
