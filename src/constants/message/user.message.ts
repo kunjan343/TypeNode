@@ -15,6 +15,9 @@ export const USER_MESSAGE = {
         INVALID: {
             EMAIL: 'Email format is invalid'
         },
+        CONFLICT: {
+            USERNAME: 'Username is already exist'
+        },
         EXCEPTION: 'Something went wrong, please try again'
     }
 };
