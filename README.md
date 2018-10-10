@@ -10,6 +10,10 @@
 <b>Enjoy, Like, Love the project? Drop a star and spread the word.(More feature will come soon)</b><br>
 Live server: [Heroku](https://typenode.herokuapp.com/)
 
+<p align="center">
+  <img src="https://github.com/kunjan343/TypeNode/tree/master/src/public/images/typenode_logo.png" alt="TypeNode Logo">
+</p>
+
 ### Pre-require library
 - `npm install -g nodemon`
 - `npm install -g ts-node`
