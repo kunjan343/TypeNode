@@ -10,7 +10,10 @@ export const USER_MESSAGE = {
     ERROR: {
         EMPTY: {
             USERNAME: 'Username required',
-            PASSWORD: 'Password required'
+            PASSWORD: 'Password required',
+            ID: 'User ID should not be empty',
+            DATA: 'Empty data received',
+            USERDATA: 'User not found in system'
         },
         INVALID: {
             EMAIL: 'Email format is invalid'
