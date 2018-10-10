@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { getRepository } from 'typeorm';
+import { getRepository, ObjectID, UpdateResult } from 'typeorm';
 import { IUser, UserSchema } from '../database/UserSchema';
 
 /**
@@ -7,6 +7,15 @@ import { IUser, UserSchema } from '../database/UserSchema';
  */
 export interface IUserModel {
     create(user: IUser): Promise<IUser>;
+
+    searchByUsername(username: string): Promise<IUser>;
+
+    searchAll(): Promise<IUser[]>;
+
+    search(id: ObjectID): Promise<IUser>;
+
+    update(id: ObjectID, data: object): Promise<UpdateResult>;
+
 }
 
 /**
@@ -37,7 +46,23 @@ export class UserModel implements IUserModel {
      * Search all users
      * @returns     users list
      */
-    public search = (): Promise<IUser[]> => {
+    public searchAll = (): Promise<IUser[]> => {
         return getRepository(UserSchema).find();
+    }
+
+    /**
+     * Search user by id
+     * @returns     user object
+     */
+    public search = (id: ObjectID): Promise<IUser> => {
+        return getRepository(UserSchema).findOne(id);
+    }
+
+    /**
+     * Search user by id
+     * @returns     user object
+     */
+    public update = (id: ObjectID, data: object): Promise<UpdateResult> => {
+        return getRepository(UserSchema).update(id, data);
     }
 }
