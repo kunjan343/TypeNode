@@ -14,6 +14,7 @@ const utils: IUtils = new Utils();
 // Global variables
 const userPrefix: string = APP.ROUTE_PREFIX + ROUTES.USER;
 let username: string;
+let userId: string;
 
 describe('userRoute', () => {
     it('should create instance of class', () => {
@@ -99,6 +100,35 @@ describe('userRoute', () => {
           .end((err: any, res: any) => {
               expect(res.statusCode).to.be.equal(200);
               expect(res.body).to.be.not.empty;
+              done();
+          });
+    });
+
+    it('should return list of all users', (done) => {
+        request(app)
+          .get(userPrefix + '/all')
+          .end((err: any, res: any) => {
+              userId = res.body[0]._id;
+              expect(res.statusCode).to.be.equal(200);
+              expect(res.body).to.be.not.empty;
+              done();
+          });
+    });
+
+    it('should not update user without userId', (done) => {
+        request(app)
+          .get(userPrefix + '/update/')
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(500);
+              done();
+          });
+    });
+
+    it('should not update user with wrong userId', (done) => {
+        request(app)
+          .get(userPrefix + '/update/123456')
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(500);
               done();
           });
     });
