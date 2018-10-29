@@ -100,35 +100,40 @@ describe('userRoute', () => {
           .end((err: any, res: any) => {
               expect(res.statusCode).to.be.equal(200);
               expect(res.body).to.be.not.empty;
-              done();
-          });
-    });
-
-    it('should return list of all users', (done) => {
-        request(app)
-          .get(userPrefix + '/all')
-          .end((err: any, res: any) => {
               userId = res.body[0]._id;
-              expect(res.statusCode).to.be.equal(200);
-              expect(res.body).to.be.not.empty;
-              done();
-          });
-    });
-
-    it('should not update user without userId', (done) => {
-        request(app)
-          .get(userPrefix + '/update/')
-          .end((err: any, res: any) => {
-              expect(res.statusCode).to.be.equal(500);
               done();
           });
     });
 
     it('should not update user with wrong userId', (done) => {
         request(app)
-          .get(userPrefix + '/update/123456')
+          .put(userPrefix + '/update/123456')
           .end((err: any, res: any) => {
-              expect(res.statusCode).to.be.equal(500);
+              expect(res.statusCode).to.be.equal(400);
+              done();
+          });
+    });
+
+    it('should not update empty user detail', (done) => {
+        request(app)
+          .put(userPrefix + '/update/' + userId)
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(400);
+              expect(res.body.error).to.be.equal(USER_MESSAGE.ERROR.EMPTY.DATA);
+              done();
+          });
+    });
+
+    it('should update user detail successfully', (done) => {
+        const userDetail = {
+            username: 'abc123'
+        };
+        request(app)
+          .put(userPrefix + '/update/' + userId)
+          .send(userDetail)
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(200);
+              expect(res.body.message).to.be.equal(true);
               done();
           });
     });
