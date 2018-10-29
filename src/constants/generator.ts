@@ -10,7 +10,8 @@ export const EXCLUDE_FILES = [
     'logger.ts',
     'interfaces',
     'database',
-    'constants'
+    'constants',
+    'public'
 ];
 
 /**
