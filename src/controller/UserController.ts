@@ -6,6 +6,8 @@ import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
  * Defined interface for user controller
  */
 export interface IUserController {
+    userList(req: IReq, res: IRes, next: INext): IReqFunc;
+
     userData(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 

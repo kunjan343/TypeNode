@@ -1,6 +1,7 @@
+import * as Boom from 'boom';
+import * as _ from 'lodash';
 import { ErrorRequestHandler } from 'express';
 import { injectable } from 'inversify';
-import * as _ from 'lodash';
 import { INext, IReq, IReqFunc, IRes } from '../interfaces/express';
 import { MESSAGE } from '../constants/server';
 
@@ -106,8 +107,7 @@ export class RequestHooks implements IRequestHooks {
      * @returns     request handler function
      */
     public handle404ErrorResponse: IReqFunc = (req: IReq, res: IRes, next: INext) => {
-        const error: any = new Error(MESSAGE.INVALID_ROUTE);
-        error.statucCode = 404;
+        const error: any = Boom.badRequest(MESSAGE.INVALID_ROUTE);
         return next(error);
     }
 }

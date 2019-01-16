@@ -43,5 +43,14 @@ export class UserRoute implements IRoutes {
               this.userOpsService.searchUsers,
               this.userController.userList
           ]);
+
+        // Update user by id reference
+        app.route(this.userPrefix + '/update/:id')
+          .put([
+              this.userValidationService.validateUpdateUser,
+              this.userOpsService.searchUser,
+              this.userOpsService.update,
+              this.userController.userData
+          ]);
     }
 }
