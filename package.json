@@ -59,7 +59,7 @@
         "@types/winston": "^2.4.4",
         "chai": "^4.1.2",
         "codecov": "^3.1.0",
-        "mocha": "^5.2.0",
+        "mocha": "^6.0.0",
         "nodemon": "^1.18.4",
         "nyc": "^13.0.1",
         "supertest": "^3.3.0",
