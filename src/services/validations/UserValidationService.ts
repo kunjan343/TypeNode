@@ -13,6 +13,8 @@ export interface IUserValidationService {
     validateSearchUser(req: IReq, res: IRes, next: INext): IReqFunc;
 
     validateUpdateUser(req: IReq, res: IRes, next: INext): IReqFunc;
+
+    validateDeleteUser(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
 /**
@@ -69,6 +71,22 @@ export class UserValidationService implements IUserValidationService {
             return next(Boom.badRequest(USER_MESSAGE.ERROR.EMPTY.ID));
         } else if (_.isEmpty(req.body)) {
             return next(Boom.badRequest(USER_MESSAGE.ERROR.EMPTY.DATA));
+        }
+        return next();
+    }
+
+    /**
+     * Validate delete user detail request
+     * @param req   api request object
+     * @param res   api request object
+     * @param next  next function call
+     * @returns     request handler function
+     */
+    public validateDeleteUser: IReqFunc = (req: IReq, res: IRes, next: INext) => {
+        const params = _.merge(req.params, req.body);
+        req.params = params;
+        if (_.isEmpty(params.id)) {
+            return next(Boom.badRequest(USER_MESSAGE.ERROR.EMPTY.ID));
         }
         return next();
     }

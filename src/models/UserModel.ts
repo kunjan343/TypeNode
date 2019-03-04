@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { getRepository, ObjectID, UpdateResult } from 'typeorm';
+import { DeleteResult, getRepository, ObjectID, UpdateResult } from 'typeorm';
 import { IUser, UserSchema } from '../database/UserSchema';
 
 /**
@@ -15,6 +15,8 @@ export interface IUserModel {
     search(id: ObjectID): Promise<IUser>;
 
     update(id: ObjectID, data: object): Promise<UpdateResult>;
+
+    remove(id: ObjectID): Promise<DeleteResult>;
 
 }
 
@@ -52,17 +54,29 @@ export class UserModel implements IUserModel {
 
     /**
      * Search user by id
-     * @returns     user object
+     * @param       id ObjectID
+     * @returns     data userData
      */
     public search = (id: ObjectID): Promise<IUser> => {
         return getRepository(UserSchema).findOne(id);
     }
 
     /**
-     * Search user by id
-     * @returns     user object
+     * Update user by id
+     * @param     id ObjectId
+     * @param     data object
+     * @returns     data user object
      */
     public update = (id: ObjectID, data: object): Promise<UpdateResult> => {
         return getRepository(UserSchema).update(id, data);
+    }
+
+    /**
+     * Delete user by id
+     * @param       id ObjectID
+     * @returns     user user object
+     */
+    public remove = (id: ObjectID): Promise<DeleteResult> => {
+        return getRepository(UserSchema).delete(id);
     }
 }
