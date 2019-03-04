@@ -24,6 +24,8 @@ export interface IUserOpsService {
     searchUser(req: IReq, res: IRes, next: INext): IReqFunc;
 
     update(req: IReq, res: IRes, next: INext): IReqFunc;
+
+    remove(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
 /**
@@ -70,7 +72,7 @@ export class UserOpsService implements IUserOpsService {
             req.userStore = await this.userModel.searchByUsername(username);
             return next();
         } catch (error) {
-            logger.error('createUser', error);
+            logger.error('searchUserByUsername', error);
             return next(error);
         }
     }
@@ -87,7 +89,7 @@ export class UserOpsService implements IUserOpsService {
             req.userStore = await this.userModel.searchAll();
             return next();
         } catch (error) {
-            logger.error('createUser', error);
+            logger.error('searchUsers', error);
             return next(error);
         }
     }
@@ -105,7 +107,7 @@ export class UserOpsService implements IUserOpsService {
             req.userStore = await this.userModel.search(id);
             return next();
         } catch (error) {
-            logger.error('createUser', error);
+            logger.error('searchUser', error);
             return next(error);
         }
     }
@@ -128,7 +130,29 @@ export class UserOpsService implements IUserOpsService {
             req.userStore = {message: true};
             return next();
         } catch (error) {
-            logger.error('createUser', error);
+            logger.error('update', error);
+            return next(error);
+        }
+    }
+
+    /**
+     * Delete user detail
+     * @param req     api request object
+     * @param res     api response object
+     * @param next    next callback
+     * @returns       request handler function
+     */
+    public remove: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
+        try {
+            if (_.isEmpty(req.userStore)) {
+                return next(Boom.badRequest(USER_MESSAGE.ERROR.EMPTY.USERDATA));
+            }
+            const id: ObjectID = req.userStore._id;
+            await this.userModel.remove(id);
+            req.userStore = {message: true};
+            return next();
+        } catch (error) {
+            logger.error('removeUser', error);
             return next(error);
         }
     }

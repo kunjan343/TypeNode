@@ -137,4 +137,24 @@ describe('userRoute', () => {
               done();
           });
     });
+
+    it('should not remove user for wrong userId', (done) => {
+        request(app)
+          .delete(userPrefix + '/remove/aaaaaaaaaaaaaaaaaaaaaaaa')
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(400);
+              expect(res.body.error).to.be.equal(USER_MESSAGE.ERROR.EMPTY.USERDATA);
+              done();
+          });
+    });
+
+    it('should remove user data successfully', (done) => {
+        request(app)
+          .delete(userPrefix + '/remove/' + userId)
+          .end((err: any, res: any) => {
+              expect(res.statusCode).to.be.equal(200);
+              expect(res.body.message).to.be.equal(true);
+              done();
+          });
+    });
 });

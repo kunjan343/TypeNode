@@ -52,5 +52,14 @@ export class UserRoute implements IRoutes {
               this.userOpsService.update,
               this.userController.userData
           ]);
+
+        // Remove user by id reference
+        app.route(this.userPrefix + '/remove/:id')
+          .delete([
+              this.userValidationService.validateDeleteUser,
+              this.userOpsService.searchUser,
+              this.userOpsService.remove,
+              this.userController.userData
+          ]);
     }
 }
