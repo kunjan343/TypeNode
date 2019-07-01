@@ -75,7 +75,6 @@ export class RequestHooks implements IRequestHooks {
      * @returns     request handler function
      */
     public handleErrorResponse: ErrorRequestHandler = (error: any, req: IReq, res: IRes, next: INext) => {
-        console.log("error",error);
         if (!error) {
             return next();
         }
