@@ -65,7 +65,7 @@ app.use(middleware.handleResponse);
 /**
  * Handle invalid route error
  */
-app.use(middleware.handle404ErrorResponse);
+app.use(middleware.handle500ErrorResponse);
 
 /**
  * Start express server on given port

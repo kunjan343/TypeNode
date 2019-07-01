@@ -27,8 +27,7 @@
         "trailing-comma": [
             true,
             {
-                "multiline": "never",
-                "singleline": "never"
+                "multiline": "never"
             }
         ],
         "object-literal-sort-keys": false

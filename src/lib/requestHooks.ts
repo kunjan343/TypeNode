@@ -15,7 +15,7 @@ export interface IRequestHooks {
 
     handleErrorResponse(error: any, req: IReq, res: IRes, next: INext): ErrorRequestHandler;
 
-    handle404ErrorResponse(req: IReq, res: IRes, next: INext): IReqFunc;
+    handle500ErrorResponse(req: IReq, res: IRes, next: INext): IReqFunc;
 }
 
 /**
@@ -96,7 +96,7 @@ export class RequestHooks implements IRequestHooks {
         }
 
         res.status(errorResponse.statusCode ? errorResponse.statusCode : 404).json(errorResponse);
-        res.end();
+        res.end(JSON.stringify(errorResponse));
     }
 
     /**
@@ -106,7 +106,7 @@ export class RequestHooks implements IRequestHooks {
      * @param next  next function call
      * @returns     request handler function
      */
-    public handle404ErrorResponse: IReqFunc = (req: IReq, res: IRes, next: INext) => {
+    public handle500ErrorResponse: IReqFunc = (req: IReq, res: IRes, next: INext) => {
         const error: any = Boom.badRequest(MESSAGE.INVALID_ROUTE);
         return next(error);
     }
