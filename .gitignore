@@ -1,12 +1,10 @@
 # Logs
 logs
-*.log
 npm-debug.log*
 
 # editor files
 .idea/
 tmp/sqlitedb.db
-.DS_Store
 
 # node modules
 node_modules/
@@ -18,11 +16,10 @@ dist
 # Coverage directory used by tools like istanbul
 coverage
 .nyc_output
-coverage.*
 
 # auto generate files
 types.ts
 inversify.config.ts
 
 # documentation
-# docs
+docs

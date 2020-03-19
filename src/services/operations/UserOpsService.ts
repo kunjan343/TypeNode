@@ -101,7 +101,7 @@ export class UserOpsService implements IUserOpsService {
      * @param next    next callback
      * @returns       request handler function
      */
-    public searchUser: IReqFunc = async (req: IReq, res: IRes, next: INext) => {
+    public searchUser: IReqFunc = async (req: any, res: IRes, next: INext) => {
         try {
             const id: ObjectID = req.params.id;
             req.userStore = await this.userModel.search(id);
