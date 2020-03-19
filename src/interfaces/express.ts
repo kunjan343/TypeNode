@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { ObjectID } from 'typeorm';
 
 /**
  * Modify default express request interface
