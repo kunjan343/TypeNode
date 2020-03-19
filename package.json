@@ -11,9 +11,7 @@
         "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
         "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
         "generate": "ts-node src/generate.ts",
-        "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode",
-        "snyk-protect": "snyk protect",
-        "prepublish": "npm run snyk-protect"
+        "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode"
     },
     "keywords": [
         "typescript",
