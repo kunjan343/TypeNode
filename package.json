@@ -1,27 +1,26 @@
 {
-    "name": "type-node",
-    "version": "0.0.2",
-    "description": "Advance typescript node server for enterprise applications",
-    "main": "src/index.ts",
-    "scripts": {
-        "live": "npm run generate && nodemon",
-        "start": "node dist/index.js",
-        "build": "npm run generate && tsc",
-        "lint": "tslint 'src/**/*.ts' -t verbose --force",
-        "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
-        "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
-        "generate": "ts-node src/generate.ts",
-        "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode",
-        "snyk-protect": "snyk protect",
-        "prepublish": "npm run snyk-protect"
-    },
-    "keywords": [
-        "typescript",
-        "nodejs",
-        "typenode",
-        "enterprise",
-        "server",
-        "express"
+  "name": "type-node",
+  "version": "0.0.2",
+  "description": "Advance typescript node server for enterprise applications",
+  "main": "src/index.ts",
+  "scripts": {
+    "live": "npm run generate && nodemon",
+    "start": "node dist/index.js",
+    "build": "npm run generate && tsc",
+    "lint": "tslint 'src/**/*.ts' -t verbose --force",
+    "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
+    "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
+    "generate": "ts-node src/generate.ts",
+    "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "typenode",
+    "enterprise",
+    "server",
     ],
     "engines": {
         "node": "8.9.1",
