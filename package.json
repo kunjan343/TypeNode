@@ -1,88 +1,92 @@
 {
-    "name": "type-node",
-    "version": "0.0.2",
-    "description": "Advance typescript node server for enterprise applications",
-    "main": "src/index.ts",
-    "scripts": {
-        "live": "npm run generate && nodemon",
-        "start": "node dist/index.js",
-        "build": "npm run generate && tsc",
-        "lint": "tslint 'src/**/*.ts' -t verbose --force",
-        "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
-        "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
-        "generate": "ts-node src/generate.ts",
-        "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode"
-    },
-    "keywords": [
-        "typescript",
-        "nodejs",
-        "typenode",
-        "enterprise",
-        "server"
+  "name": "type-node",
+  "version": "0.0.2",
+  "description": "Advance typescript node server for enterprise applications",
+  "main": "src/index.ts",
+  "scripts": {
+    "live": "npm run generate && nodemon",
+    "start": "node dist/index.js",
+    "build": "npm run generate && tsc",
+    "lint": "tslint 'src/**/*.ts' -t verbose --force",
+    "test": "npm run generate && nyc mocha -r ts-node/register ./test/**/*.spec.ts --timeout 10000 --exit",
+    "codecov": "nyc report --reporter=json && codecov -f coverage/*.json",
+    "generate": "ts-node src/generate.ts",
+    "doc": "typedoc --hideGenerator --out ./docs ./src --theme default --name TypeNode",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "typenode",
+    "enterprise",
+    "server"
+  ],
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunjan343/TypeNode.git"
+  },
+  "author": {
+    "name": "Kunjan Patel",
+    "email": "kunjanpatelrock@gmail.com"
+  },
+  "homepage": "https://github.com/kunjan343/TypeNode",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "boom": "^7.2.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "fs-extra": "^8.0.1",
+    "inversify": "^5.0.1",
+    "lodash": "^4.17.10",
+    "mongodb": "^3.1.4",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.7",
+    "winston": "^3.1.0",
+    "snyk": "^1.316.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/boom": "^7.2.0",
+    "@types/chai": "^4.1.4",
+    "@types/express": "^4.16.0",
+    "@types/lodash": "^4.14.116",
+    "@types/mocha": "^5.2.5",
+    "@types/mongodb": "^3.1.4",
+    "@types/node": "^12.0.2",
+    "@types/winston": "^2.4.4",
+    "chai": "^4.1.2",
+    "codecov": "^3.1.0",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.4",
+    "nyc": "^14.0.0",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.17.0",
+    "typescript": "^3.0.3"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
     ],
-    "engines": {
-        "node": "8.9.1",
-        "npm": "5.5.1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/kunjan343/TypeNode.git"
-    },
-    "author": {
-        "name": "Kunjan Patel",
-        "email": "kunjanpatelrock@gmail.com"
-    },
-    "homepage": "https://github.com/kunjan343/TypeNode",
-    "dependencies": {
-        "body-parser": "^1.18.3",
-        "boom": "^7.2.0",
-        "cors": "^2.8.4",
-        "express": "^4.16.3",
-        "fs-extra": "^8.0.1",
-        "inversify": "^5.0.1",
-        "lodash": "^4.17.10",
-        "mongodb": "^3.1.4",
-        "reflect-metadata": "^0.1.12",
-        "typeorm": "^0.2.7",
-        "winston": "^3.1.0"
-    },
-    "devDependencies": {
-        "@types/body-parser": "^1.17.0",
-        "@types/boom": "^7.2.0",
-        "@types/chai": "^4.1.4",
-        "@types/express": "^4.16.0",
-        "@types/lodash": "^4.14.116",
-        "@types/mocha": "^5.2.5",
-        "@types/mongodb": "^3.1.4",
-        "@types/node": "^12.0.2",
-        "@types/winston": "^2.4.4",
-        "chai": "^4.1.2",
-        "codecov": "^3.1.0",
-        "mocha": "^6.0.2",
-        "nodemon": "^1.18.4",
-        "nyc": "^14.0.0",
-        "supertest": "^4.0.2",
-        "ts-node": "^8.0.2",
-        "tslint": "^5.17.0",
-        "typescript": "^3.0.3"
-    },
-    "nyc": {
-        "include": [
-            "src/**/*.ts"
-        ],
-        "exclude": [
-            "test/**/*.ts"
-        ],
-        "extension": [
-            ".ts"
-        ],
-        "require": [
-            "ts-node/register"
-        ],
-        "report": true,
-        "reporter": [
-            "json"
-        ],
-        "all": true
-    }
+    "exclude": [
+      "test/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "report": true,
+    "reporter": [
+      "json"
+    ],
+    "all": true
+  },
+  "snyk": true
 }
