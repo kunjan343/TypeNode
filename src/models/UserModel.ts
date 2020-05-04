@@ -41,7 +41,7 @@ export class UserModel implements IUserModel {
      * @returns     stored user object
      */
     public searchByUsername = (username: string): Promise<IUser> => {
-        return getRepository(UserSchema).findOne({username});
+        return getRepository(UserSchema).findOneOrFail({username});
     }
 
     /**

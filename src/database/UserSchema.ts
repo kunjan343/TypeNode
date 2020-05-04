@@ -1,5 +1,5 @@
-import { Column, Entity } from 'typeorm';
-import { DefaultSchema, IDefaultSchema } from './DefaultSchema';
+import {Column, Entity} from 'typeorm';
+import {DefaultSchema, IDefaultSchema} from './DefaultSchema';
 
 /**
  * Defined interface for user schema
@@ -15,7 +15,7 @@ export interface IUser extends IDefaultSchema {
  */
 @Entity('users')
 export class UserSchema extends DefaultSchema implements IUser {
-    @Column()
+    @Column('text', {unique: true})
     public username: string;
     @Column()
     public password: string;

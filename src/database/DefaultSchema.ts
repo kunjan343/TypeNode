@@ -11,7 +11,7 @@ export interface IDefaultSchema {
 
 /**
  * Define global schema for every database modal.
- * Structure follows TypeORM schema defination.
+ * Structure follows TypeORM schema definition.
  */
 @Entity()
 export class DefaultSchema implements IDefaultSchema {
