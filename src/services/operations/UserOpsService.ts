@@ -1,15 +1,15 @@
 import * as Boom from 'boom';
 import * as _ from 'lodash';
-import { inject, injectable } from 'inversify';
-import { FIELDS } from '../../constants/model';
-import { IUser } from '../../database/UserSchema';
-import { INext, IReq, IReqFunc, IRes } from '../../interfaces/express';
-import { logger } from '../../lib/logger';
-import { ObjectHandler } from '../../lib/objectHandler';
-import { UserModel } from '../../models/UserModel';
+import {inject, injectable} from 'inversify';
+import {FIELDS} from '../../constants/model';
+import {IUser} from '../../database/UserSchema';
+import {INext, IReq, IReqFunc, IRes} from '../../interfaces/express';
+import {logger} from '../../lib/logger';
+import {ObjectHandler} from '../../lib/objectHandler';
+import {UserModel} from '../../models/UserModel';
 import TYPES from '../../types';
-import { USER_MESSAGE } from '../../constants/message/user.message';
-import { ObjectID } from 'typeorm';
+import {USER_MESSAGE} from '../../constants/message/user.message';
+import {ObjectID} from 'typeorm';
 
 /**
  * Define methods for user operation functions
