@@ -2,8 +2,6 @@
 
 
 ![Travis build](https://travis-ci.org/kunjan343/TypeNode.svg?branch=master)
-[![dependencies Status](https://david-dm.org/kunjan343/TypeNode/status.svg)](https://david-dm.org/kunjan343/TypeNode)
-[![devDependencies Status](https://david-dm.org/kunjan343/TypeNode/dev-status.svg)](https://david-dm.org/kunjan343/TypeNode?type=dev)
 [![codecov](https://codecov.io/gh/kunjan343/TypeNode/branch/master/graph/badge.svg)](https://codecov.io/gh/kunjan343/TypeNode)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5cc09f96eff140469a9814204190bbac)](https://www.codacy.com/app/kunjan343/TypeNode?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kunjan343/TypeNode&amp;utm_campaign=Badge_Grade)
 
@@ -46,7 +44,6 @@ or
 
 ### Badges
 - Build badge is from [Travis](https://travis-ci.org).
-- Dependency check badges are from [David-dm](https://david-dm.org).
 - Code coverage badge is from [Codecov](https://codecov.io).
 - Code quality badge is from [Codacy](https://app.codacy.com).
 
