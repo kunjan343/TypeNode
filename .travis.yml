@@ -4,13 +4,6 @@ node_js:
 cache:
   directories:
     - "node_modules"
-deploy:
-  provider: heroku
-  api_key:
-    secure: "dbaf1dc8-4cbd-48af-ba22-63a91742a2f8"
-  app: typenode
-  strategy: git
-  on: master
 branches:
   only:
   - development
