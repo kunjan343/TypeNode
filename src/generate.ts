@@ -6,6 +6,8 @@ import { ContainerGenerator } from './lib/generator/container.generate';
 
 declare const process;
 
+const DIR_PATH = __dirname + '/src';
+
 /**
  * File generator creates two important files in project.
  */
@@ -21,15 +23,15 @@ export class FileGenerator {
         try {
             logger.info('1) Generating file list...');
             const fileStructure = new FileStructure();
-            const fileList: IFileObject[] = await fileStructure.readFiles(__dirname);
+            const fileList: IFileObject[] = await fileStructure.readFiles(DIR_PATH);
             logger.info('   complete');
             logger.info('2) Generating types...');
             const typesGenerator = new TypesGenerator();
-            await typesGenerator.generateTypes(fileList, __dirname);
+            await typesGenerator.generateTypes(fileList, DIR_PATH);
             logger.info('   complete');
             logger.info('3) Generating container file...');
             const containerGenerator = new ContainerGenerator();
-            await containerGenerator.generateInjects(fileList, __dirname);
+            await containerGenerator.generateInjects(fileList, DIR_PATH);
             logger.info('   complete');
             return __dirname;
         } catch (error) {
