@@ -57,7 +57,7 @@
     "@types/lodash": "^4.14.116",
     "@types/mocha": "^9.1.0",
     "@types/mongodb": "^4.0.7",
-    "@types/node": "^17.0.14",
+    "@types/node": "^18.7.17",
     "@types/winston": "^2.4.4",
     "chai": "^4.1.2",
     "codecov": "^3.1.0",
